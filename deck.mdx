@@ -85,7 +85,149 @@ Does the whole system work together?
 
 ---
 
-## Create A React App
+# How React Works
+
+---
+
+## Step 1
+
+React creates an object representation of nodes representing a user interface.
+
+- It does not produce HTML.
+
+---
+
+## Step 2
+
+A "renderer" converts that object to a useable interface.
+
+- ReactDOM renders React as DOM tree and appended to DOM.
+- ReactDOMServer renders to an HTML string for server to send to client.
+
+---
+
+# Test Renderers
+
+- React Test Renderer
+- React Testing Library
+- Enzyme
+
+---
+
+# The Test Suite
+
+- Test Runner (Jest)
+  - Runs the tests
+- Test Renderer (react-test-library)
+  - Creates and inspects output
+- Assertions (Chai)
+  - Tests the output
+
+---
+
+# Zero-Config Testing (and more)
+
+- react-scripts
+  - `react-scripts test`
+- @wordpress/scripts
+  - `wordpress-scripts test`
+
+---
+
+`npx create-react-app`
+
+# Let's Write Some Tests
+
+And A Web App :)
+
+---
+
+# Questions To Ask?
+
+- How do I know the components works?
+  - Unit tests
+- How do I know the components work together?
+  - Integration/ Feature Tests
+- What is the most realistic test of the program?
+  - Acceptance/ e2e Tests
+
+---
+
+# App Spec
+
+Create a one page app that:
+
+- Displays a value
+- Has an input to change that value
+
+---
+
+# Test Spec
+
+- Unit tests:
+  - Does display component display the supplied value?
+  - Does edit callback display the value
+  - Does the edit component supply updated value to onChange callback?
+
+---
+
+# Test Spec
+
+- Integration Tests:
+  - Does the display value change with the input?
+
+---
+
+# Layout Of Our Test File
+
+---
+
+## `test()` Syntax
+
+```jsx
+//Import React
+import React from "react";
+//Import test renderer
+import TestRenderer from "react-test-renderer";
+//Import component to test
+import { DisplayValue } from "./DisplayValue";
+
+test("Component renders value", () => {});
+
+test("Component has supplied class name", () => {});
+```
+
+---
+
+## BDD style
+
+```jsx
+//Import React
+import React from "react";
+//Import test renderer
+import TestRenderer from "react-test-renderer";
+//Import component to test
+import { EditValue } from "./DisplayValue";
+
+describe("EditValue component", () => {
+  //Shared mock onChange function
+  let onChange = jest.fn();
+  beforeEach(() => {
+    //Reset onChange mock before each test.
+    onChange = jest.fn();
+  });
+
+  it("Has the supplied value in the input", () => {});
+
+  it("id and for attribute match", () => {});
+
+  it("Passes string to onChange when changed", () => {});
+
+  it("Passes string to onChange when changed with an integer", () => {});
+});
+```
+
+# Create A React App
 
 <SyntaxHighlighter
   language="bash"
