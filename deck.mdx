@@ -2,7 +2,7 @@ import { Appear, Head, Image } from "mdx-deck";
 import { FullScreenCode, Invert } from "mdx-deck/layouts";
 
 import SyntaxHighlighter from "react-syntax-highlighter/prism";
-import { atomDark } from "react-syntax-highlighter/styles/prism";
+import { atomLight, atomDark } from "react-syntax-highlighter/styles/prism";
 export { dark as theme } from "mdx-deck/themes";
 
 <Head>
@@ -50,3 +50,46 @@ export { dark as theme } from "mdx-deck/themes";
     </li>
   </ul>
 </Image>
+
+---
+
+## Create A React App
+
+<SyntaxHighlighter
+  language="bash"
+  style={atomLight}
+  customStyle={{ minWidth: "500px" }}
+>
+  {`
+# install create-react-app
+npx create-react-app
+# Run the included test
+yarn test
+  `}
+</SyntaxHighlighter>
+
+---
+
+## Section
+
+Create React App comes with one test.
+
+This is an acceptance test. It tests if **anything** is broken.
+
+<SyntaxHighlighter
+  language="bash"
+  style={atomLight}
+  customStyle={{ minWidth: "500px" }}
+>
+  {`
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+it('renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<App />, div);
+  ReactDOM.unmountComponentAtNode(div);
+});
+`}
+
+</SyntaxHighlighter>
