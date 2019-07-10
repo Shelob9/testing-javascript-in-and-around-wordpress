@@ -487,3 +487,332 @@ it( 'Displays the updated value when value changes', () => {
 `}
 
 </SyntaxHighlighter>
+
+---
+
+# JavaScript Testing In And Around WordPress
+
+## Part Two: Testing Gutenberg Blocks
+
+---
+
+`yarn add @wordpress/scripts`
+
+# Let's Write Some Tests
+
+And A Plugin
+
+---
+
+# Spec
+
+A block for showing some text.
+
+- The components for the app should be reused.
+- The block preview and rendered content should be identical.
+- The control for the value should appear in the block’s inspector controls.
+
+---
+
+# Test Spec
+
+## Integration Test
+
+Will Gutenberg be able to manage our component’s state?
+
+---
+
+# Test Spec
+
+## e2e Test
+
+Does our plugin activate without errors?
+
+Does our block appear in the block chooser?
+
+---
+
+# What Is `@wordpress/scripts` ??
+
+- React-scripts inspired zero-config build tool for WordPress plugins with blocks.
+- Provides:
+  - Compilers
+  - Linters
+  - Test runner
+  - e2e tests
+  - Local development
+
+---
+
+# Setting Up Plugin For Testing
+
+## Install WordPress scripts
+
+<SyntaxHighlighter
+  language="bash"
+  style={atomLight}
+  customStyle={{ minWidth: "500px" }}
+>
+  {`
+# Install WordPress scripts
+yarn add @wordpress/scripts
+  `}
+</SyntaxHighlighter>
+
+---
+
+## Add Scripts To package.json
+
+See [README](https://www.npmjs.com/package/@wordpress/scripts)
+
+```json
+{
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "test:e2e": "wp-scripts test-e2e --config e2e/jest.config.js",
+    "test:unit": "wp-scripts test-unit-js --config jest.config.js",
+    "env:start": "bash start.sh"
+  }
+}
+```
+
+---
+
+## Jest Is The Test Runner
+
+Nothing new to learn.
+
+# Structure Block For Easy Testing
+
+- The file that builds the block to do nothing but build the block.
+
+---
+
+# The Block
+
+```jsx
+import { registerBlockType } from "@wordpress/blocks";
+import { Editor } from "./components/Editor";
+import { Save } from "./components/Save";
+const blockConfig = require("../block.json");
+const { name, title, attributes, category, keywords } = blockConfig;
+
+registerBlockType(name, {
+  title,
+  attributes,
+  category,
+  keywords,
+  edit: props => <Editor {...props} />,
+  save: props => <Save {...props} />
+});
+```
+
+---
+
+## Edit And Save Callbacks
+
+The edit and save callback are composed in separate files, importing components built for the app.
+
+---
+
+### Edit Callback
+
+```jsx
+import React, { Fragment } from "react";
+import { EditValue } from "./app/EditValue";
+import { DisplayValue } from "./app/DisplayValue";
+import { InspectorControls } from "@wordpress/block-editor";
+export const Editor = ({ attributes, setAttributes, className, clientId }) => {
+  //Change handler
+  const onChange = value => setAttributes({ value });
+  //current value
+  const { value } = attributes;
+  return (
+    <Fragment>
+      <InspectorControls>
+        <EditValue
+          className={`${className}-editor`}
+          id={clientId}
+          value={value}
+          onChange={onChange}
+        />
+      </InspectorControls>
+      <DisplayValue value={value} className={className} />
+    </Fragment>
+  );
+};
+```
+
+---
+
+### Test Edit Callback
+
+```jsx
+//Import React
+import React from "react";
+//Import test renderer
+import { render, fireEvent, cleanup } from "@testing-library/react";
+//Import component to test
+import { Editor } from "./Editor";
+
+describe("Editor componet", () => {
+  afterEach(cleanup);
+
+  it("matches snapshot", () => {
+    const attributes = { value: "Hi Roy" };
+    const setAttributes = jest.fn();
+
+    const props = {
+      attributes,
+      setAttributes,
+      clientId: "random-id",
+      className: "wp-blocks-whatever"
+    };
+    expect(render(<Editor {...props} />)).toMatchSnapshot();
+  });
+});
+```
+
+---
+
+### Save Callback:
+
+```jsx
+import React from "react";
+import { DisplayValue } from "./app/DisplayValue";
+export const Save = ({ attributes, className }) => {
+  return <DisplayValue value={attributes.value} className={className} />;
+};
+```
+
+---
+
+### Test Save Callback
+
+```jsx
+//Import React
+import React from "react";
+//Import test renderer
+import { render, cleanup } from "@testing-library/react";
+//Import component to test
+import { Save } from "./Save";
+
+describe("Save componet", () => {
+  afterEach(cleanup);
+
+  it("matches snapshot", () => {
+    const attributes = { value: "Hi Roy" };
+
+    const props = {
+      attributes,
+      clientId: "random-id",
+      className: "wp-blocks-whatever"
+    };
+    expect(render(<Save {...props} />)).toMatchSnapshot();
+  });
+});
+```
+
+---
+
+# End To End Testing Gutenberg Blocks
+
+- Assuming that all of the components work, does the program function as expected.
+- Test as a user.
+
+---
+
+## How To Setup Up WordPress End To End Tests
+
+To make things easier, add the WordPress e2e test utilities:
+
+```bash
+# Add e2e test utilities
+yarn add @wordpress/e2e-test-utils
+```
+
+---
+
+### Configure Jest
+
+I don't have time for this.
+
+[Example You Can Copy]()
+
+This is based on [WordPress core's e2e tests](https://github.com/WordPress/wordpress-develop/tree/master/tests/e2e)
+
+---
+
+### Uses Puppetter To Automate Chrome
+
+You must have WordPress running locally with Docker.
+
+You need to have Chromium headless installed.
+
+The local development environment in example code works for this.
+
+---
+
+### Test That Block Works
+
+```js
+import {
+  insertBlock,
+  getEditedPostContent,
+  createNewPost,
+  activatePlugin
+} from "@wordpress/e2e-test-utils";
+```
+
+---
+
+### Test That Block Works
+
+```jsx
+describe("Block", () => {
+  beforeEach(async () => {
+    await activatePlugin("josh-jswp/josh-jswp.php");
+  });
+
+  it("Can add block", async () => {
+    await createNewPost();
+    await insertBlock("Josh Block");
+
+    expect(await getEditedPostContent()).toMatchSnapshot();
+  });
+});
+```
+
+---
+
+### Do NOT e2e Test Everything
+
+e2e tests ensure that the system works toghether.
+
+They are a compliment to less expensive unit/ inegration tests.
+
+---
+
+<h3>Links Related To WordPress e2e Tests</h3>
+
+<ul>
+  <li>
+    {" "}
+    <a href="https://make.wordpress.org/core/2019/06/27/introducing-the-wordpress-e2e-tests/">
+      https://make.wordpress.org/core/2019/06/27/introducing-the-wordpress-e2e-tests/
+    </a>{" "}
+  </li>
+  <li>
+    {" "}
+    <a href="https://developer.wordpress.org/block-editor/packages/packages-scripts/">
+      https://developer.wordpress.org/block-editor/packages/packages-scripts/
+    </a>{" "}
+  </li>
+</ul>
+
+---
+
+# 🤷 Any Questions? 🤷
+
+* Slides: [🤷]
