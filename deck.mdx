@@ -142,6 +142,53 @@ And A Web App :)
 
 ---
 
+# Create A React App
+
+<SyntaxHighlighter
+  language="bash"
+  style={atomLight}
+  customStyle={{ minWidth: "500px" }}
+>
+  {`
+# install create-react-app
+npx create-react-app
+# Run the included test
+yarn test
+  `}
+</SyntaxHighlighter>
+
+---
+
+## Section
+
+Create React App comes with one test.
+
+This is an acceptance test. It tests if **anything** is broken.
+
+---
+
+## Test The App Renders
+
+<SyntaxHighlighter
+  language="bash"
+  style={atomLight}
+  customStyle={{ minWidth: "500px" }}
+>
+  {`
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+it('renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<App />, div);
+  ReactDOM.unmountComponentAtNode(div);
+});
+`}
+
+</SyntaxHighlighter>
+
+---
+
 # Questions To Ask?
 
 - How do I know the components works?
@@ -202,13 +249,6 @@ test("Component has supplied class name", () => {});
 ## BDD style
 
 ```jsx
-//Import React
-import React from "react";
-//Import test renderer
-import TestRenderer from "react-test-renderer";
-//Import component to test
-import { EditValue } from "./DisplayValue";
-
 describe("EditValue component", () => {
   //Shared mock onChange function
   let onChange = jest.fn();
@@ -227,7 +267,9 @@ describe("EditValue component", () => {
 });
 ```
 
-# Create A React App
+---
+
+# Install React Test Renderer
 
 <SyntaxHighlighter
   language="bash"
@@ -235,35 +277,78 @@ describe("EditValue component", () => {
   customStyle={{ minWidth: "500px" }}
 >
   {`
-# install create-react-app
-npx create-react-app
-# Run the included test
-yarn test
+yarn add react-test-renderer
   `}
 </SyntaxHighlighter>
 
 ---
 
-## Section
+# Unit Testing React Components
 
-Create React App comes with one test.
+---
 
-This is an acceptance test. It tests if **anything** is broken.
+## Find Props
 
 <SyntaxHighlighter
-  language="bash"
+  language="javascript"
   style={atomLight}
   customStyle={{ minWidth: "500px" }}
 >
   {`
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+test( 'Component renders value', () => {
+    const value = 'The Value';
+    const testRenderer = TestRenderer.create(<DisplayValue value={value} />);
+    const testInstance = testRenderer.root;
+    expect(testInstance.findByType('div').props.children).toBe(value);
 });
 `}
 
 </SyntaxHighlighter>
+
+---
+
+## Do This For Every Prop?
+
+### That Is Testing React, Not Your Application
+
+---
+
+## Snapshot Testing
+
+### Renders Component To JSON
+
+Stores JSON in file system
+
+---
+
+## Snapshot Testing
+
+- Snapshots Acomplish Two Things:
+
+  - Make sure your props went to the right places.
+  - Force your to **commit** to changes.
+
+---
+
+## Create A Snapshot Test
+
+<SyntaxHighlighter
+  language="javascript"
+  style={atomLight}
+  customStyle={{ minWidth: "500px" }}
+>
+  {`
+test( 'Component renders correctly', () => {
+    expect(
+        TestRenderer.create(
+            <DisplayValue
+                value={'The Value'}
+                className={'the-class-name'}
+             />
+        ).toJSON()
+    ).toMatchSnapshot();
+});
+`}
+</SyntaxHighlighter>
+
+---
