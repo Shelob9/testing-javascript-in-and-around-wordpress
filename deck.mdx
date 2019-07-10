@@ -352,3 +352,138 @@ test( 'Component renders correctly', () => {
 </SyntaxHighlighter>
 
 ---
+
+# Testing Events
+
+React testing library is best for this. Enzyme is an alternative.
+
+<SyntaxHighlighter
+  language="bash"
+  style={atomLight}
+  customStyle={{ minWidth: "500px" }}
+>
+  {`
+yarn add @testing-library/react
+  `}
+</SyntaxHighlighter>
+
+---
+
+## Test On Change Event
+
+<SyntaxHighlighter
+  language="javascript"
+  style={atomLight}
+  customStyle={{ minWidth: "500px" }}
+>
+  {`
+describe("EditValue component", () => {
+    afterEach(cleanup);
+    it("Calls the onchange function", () => {
+        const onChange = jest.fn();
+        const { getByTestId } = render(
+          <EditValue 
+            onChange={onChange} 
+            value={""} 
+            id={'input-test'}
+            className={"some-class"}  
+          />);
+        fireEvent.change(getByTestId("input-test"), {
+            target: { value: "New Value" }
+        });
+        expect(onChange).toHaveBeenCalledTimes(1);
+    });
+    //...
+});
+`}
+
+</SyntaxHighlighter>
+
+---
+
+## Test On Change Event
+
+<SyntaxHighlighter
+  language="javascript"
+  style={atomLight}
+  customStyle={{ minWidth: "500px" }}
+>
+  {`
+describe("EditValue component", () => {
+    afterEach(cleanup);
+    //...
+    it("Passes updated value, not event to onChange callback", () => {
+        const onChange = jest.fn();
+        const { getByTestId } = render(
+          <EditValue 
+            onChange={onChange} 
+            value={""}
+             id="input-test" 
+             className={"some-class"}  
+          />);
+        fireEvent.change(getByTestId("input-test"), {
+            target: { value: "New Value" }
+        });
+        expect(onChange).toHaveBeenCalledWith("New Value");
+    });
+});
+`}
+
+</SyntaxHighlighter>
+
+---
+
+# Snapshot Testing
+
+<SyntaxHighlighter
+  language="javascript"
+  style={atomLight}
+  customStyle={{ minWidth: "500px" }}
+>
+  {`
+describe("EditValue component", () => {
+    afterEach(cleanup);
+     it( 'matches snapshot', () => {
+        expect( 
+          render(
+            <EditValue 
+              onChange={jest.fn()} 
+              value={"Hi Roy"}
+              id={'some-id'} 
+              className={"some-class"}
+            /> 
+          )
+        ).toMatchSnapshot();
+    });
+});
+`}
+
+</SyntaxHighlighter>
+
+---
+
+# Integration Tests
+
+Do the two components work together as expected?
+
+---
+
+## Integration Test
+
+<SyntaxHighlighter
+  language="javascript"
+  style={atomLight}
+  customStyle={{ minWidth: "500px" }}
+>
+  {`
+it( 'Displays the updated value when value changes', () => {
+    const { container,getByTestId } = render(<App  />)
+    expect(container.querySelector('.display-value').textContent).toBe('Hi Roy');
+    fireEvent.change(getByTestId("the-input"), {
+        target: { value: "New Value" }
+    });
+    expect(container.querySelector('.display-value').textContent).toBe('New Value');
+});
+`}
+
+</SyntaxHighlighter>
