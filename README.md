@@ -20,7 +20,7 @@ Edit the [`deck.mdx`](deck.mdx) file to get started.
 ## Deploy To Github Pages
 
 ```bash
-yarn publish
+yarn deploy
 git add . "rebuild"
 git push
 ```

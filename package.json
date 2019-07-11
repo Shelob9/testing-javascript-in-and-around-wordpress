@@ -1,14 +1,15 @@
 {
+  "private": "true",
   "version": "1.0.0",
   "description": "Slides for JavaScript Testing In And Around WordPress",
   "scripts": {
     "start": "mdx-deck deck.mdx",
     "build": "mdx-deck build deck.mdx",
-    "build:copy": "cp -r dist docs",
+    "build:copy": "rm -rf docs && cp -r dist docs",
     "pdf": "mdx-deck pdf deck.mdx",
     "image": "mdx-deck screenshot deck.mdx",
     "help": "mdx-deck",
-    "publish": "yarn build && yarn pdf && yarn build:copy && build:images",
+    "deploy": "yarn build && yarn pdf && yarn build:copy && yarn build:images",
     "build:images": "cp caldera-globe-25.png docs/caldera-globe-25.png && cp caldera-globe-md.png docs/caldera-globe-md.png"
   },
   "keywords": [],
