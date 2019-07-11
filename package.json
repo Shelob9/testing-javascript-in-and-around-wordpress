@@ -8,7 +8,8 @@
     "build:copy": "cp -r dist docs",
     "pdf": "mdx-deck pdf deck.mdx",
     "image": "mdx-deck screenshot deck.mdx",
-    "help": "mdx-deck"
+    "help": "mdx-deck",
+    "publish": "yarn build && yarn pdf && yarn build:copy"
   },
   "keywords": [],
   "author": "Brent Jackson",

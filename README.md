@@ -1,9 +1,13 @@
 # JavaScript Testing In And Around WordPress
 
-Boilerplate used: https://github.com/whoisryosuke/mdx-deck-netlify
-https://vibrant-goldberg-1cc489.netlify.com/
+Source for talk slides.
+
+- [Example Code For Part One](https://github.com/Shelob9/testing-react-apps)
+- [Example Code Part Two](https://github.com/Shelob9/testing-react-wordpress)
 
 ## Development
+
+Boilerplate used: https://github.com/whoisryosuke/mdx-deck-netlify
 
 To run the presentation deck in development mode:
 
@@ -13,22 +17,10 @@ npm start
 
 Edit the [`deck.mdx`](deck.mdx) file to get started.
 
-## Exporting
+## Deploy To Github Pages
 
-To build the presentation deck as static HTML:
-
-```sh
-npm run build
-```
-
-To export a PDF:
-
-```sh
-npm run pdf
-```
-
-To export an image of the title slide:
-
-```sh
-npm run image
+```bash
+yarn publish
+git add . "rebuild"
+git push
 ```
