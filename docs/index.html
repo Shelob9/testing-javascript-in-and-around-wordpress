@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<style>*{box-sizing:border-box}body{font-family:system-ui,sans-serif;margin:0}</style>
+<meta name='generator' content='mdx-deck'>
+<title data-head="true">Presentation Title</title><meta property="og:description" content="Presentation description" data-head="true"/><meta property="og:site_name" content="Presentation Title" data-head="true"/><meta property="article:published_time" content="2013-09-17T05:59:00+01:00" data-head="true"/><meta property="article:modified_time" content="2013-09-16T19:08:47+01:00" data-head="true"/><meta property="article:section" content="Article Section (React? Design?)" data-head="true"/><style data-styled="cdNsXz eIhpmh iJsiAg eyUBso foVoFS gGFRxd dTZITA lmsSVU geKoov jaZFKY flYqAW kmwXOo enxrZL iBAInW Zzzy gUKKmP eYrBlB bdHLLh bURACn jucmbo bENqf" data-styled-version="4.3.2">
+/* sc-component-id: Flex-sc-1wyx7c4-0 */
+.eYrBlB{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;margin-bottom:8px;margin-left:auto;margin-right:auto;} @media print{.eYrBlB{display:none;}}
+/* sc-component-id: Dots__Dot-m5ie3q-0 */
+.bdHLLh{-webkit-appearance:none;-moz-appearance:none;appearance:none;border:4px solid transparent;background-clip:padding-box;border-radius:9999px;width:8px;height:8px;color:inherit;opacity:0.5;margin:0px;padding:4px;color:#000;background-color:#000;} .bdHLLh:focus{outline:none;box-shadow:0 0 0 1px;}.bURACn{-webkit-appearance:none;-moz-appearance:none;appearance:none;border:4px solid transparent;background-clip:padding-box;border-radius:9999px;width:8px;height:8px;color:inherit;opacity:0.125;margin:0px;padding:4px;color:#000;background-color:#000;} .bURACn:focus{outline:none;box-shadow:0 0 0 1px;}
+/* sc-component-id: Provider__Bottom-sc-1iqnegd-0 */
+.gUKKmP{position:fixed;left:0;right:0;bottom:0;}
+/* sc-component-id: sc-bdVaJa */
+.jucmbo{cursor:pointer;width:64px;height:100vh;position:fixed;top:0;left:0;bottom:0;}
+/* sc-component-id: sc-bwzfXH */
+.bENqf{cursor:pointer;width:64px;height:100vh;position:fixed;top:0;right:0;bottom:0;}
+/* sc-component-id: Carousel__CarouselRoot-sc-1sjk1xy-0 */
+.eIhpmh{overflow-x:hidden;width:100%;height:100%;} @media print{.eIhpmh{height:auto;overflow-x:visible;}}
+/* sc-component-id: Carousel__CarouselInner-sc-1sjk1xy-1 */
+.iJsiAg{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;height:100%;-webkit-transition-property:-webkit-transform;-webkit-transition-property:transform;transition-property:transform;-webkit-transition-timing-function:ease-out;transition-timing-function:ease-out;-webkit-transition-duration:.3s;transition-duration:.3s;-webkit-transform:translate3d(0%,0,0);-ms-transform:translate3d(0%,0,0);transform:translate3d(0%,0,0);} @media print{.iJsiAg{height:auto;display:block;}}
+/* sc-component-id: Slide__Root-sc-1lv2mpt-0 */
+.eyUBso{-webkit-flex:none;-ms-flex:none;flex:none;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;overflow:hidden;width:100%;height:100%;padding-left:32px;padding-right:32px;} @media print{.eyUBso{width:100vw;height:100vh;page-break-after:always;page-break-inside:avoid;-webkit-print-color-adjust:exact;}} @media screen and (min-width:40em){.eyUBso{padding-left:64px;padding-right:64px;}} @media screen and (min-width:52em){.eyUBso{padding-left:128px;padding-right:128px;}}
+/* sc-component-id: Root-sc-14f5wl6-0 */
+.cdNsXz{font-family:system-ui,sans-serif;font-size:16px;text-align:center;width:100vw;height:100vh;color:#000;background-color:white;} @media print{.cdNsXz{font-size:24px;height:auto;}} @media screen and (min-width:64em){.cdNsXz{font-size:32px;}} .cdNsXz li > ul,.cdNsXz li > ol{font-size:inherit;} .cdNsXz li > p{font-size:inherit;margin:0;}
+/* sc-component-id: sc-fjdhpX */
+.dTZITA{line-height:1.25;font-size:3em;font-size:2.618em;color:#a3bf61;}
+/* sc-component-id: sc-jzJRlG */
+.lmsSVU{line-height:1.25;font-size:2em;font-size:1.68em;color:black;}
+/* sc-component-id: sc-cSHVUG */
+.Zzzy{line-height:1.25;font-size:1.5em;}
+/* sc-component-id: components__a-mhn4yb-1 */
+.kmwXOo{color:#07c;}
+/* sc-component-id: components__p-mhn4yb-2 */
+.gGFRxd{font-size:1.5em;font-size:1em;}
+/* sc-component-id: components__ul-mhn4yb-3 */
+.jaZFKY{text-align:left;font-size:1.5em;font-size:1em;}
+/* sc-component-id: components__Pre-mhn4yb-7 */
+.iBAInW{font-family:Menlo,monospace;text-align:left;white-space:pre-wrap;font-size:1em;margin:0px;padding:8px;color:#f0f;background-color:#333;background-color:#3a3a3c;color:#93af51;}
+/* sc-component-id: components__inlineCode-mhn4yb-8 */
+.enxrZL{font-family:Menlo,monospace;color:#f0f;background-color:codeBackground;color:#4b4b4b;}
+/* sc-component-id: components__img-mhn4yb-9 */
+.geKoov{max-width:100%;height:auto;object-fit:cover;}
+/* sc-component-id: Image-sc-90sjcj-0 */
+.foVoFS{background-position:center;background-repeat:no-repeat;background-size:cover;background-image:url(https://images.unsplash.com/photo-1559369625-a3deda175816?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);width:100vw;height:100vh;}</style>
+</head>
+<body>
+<div id=root><div><div mode="NORMAL" step="0" width="100vw" height="100vh" color="text" class="Root-sc-14f5wl6-0 cdNsXz"><div class="Carousel__CarouselRoot-sc-1sjk1xy-0 eIhpmh"><div class="Carousel__CarouselInner-sc-1sjk1xy-1 iJsiAg"><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><div src="https://images.unsplash.com/photo-1559369625-a3deda175816?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80" style="display:flex;align-items:center;justify-content:center;color:white;background-color:black" width="100vw" height="100vh" class="Image-sc-90sjcj-0 foVoFS"><img src="/caldera-globe-md.png"/><p font-size="2" class="components__p-mhn4yb-2 gGFRxd"><h1> JavaScript Testing In And Around WordPress</h1><h2>Josh Pollock </h2></p><img src="/caldera-globe-md.png"/></div></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">🌋Hi I&#x27;m Josh 🌋</h1><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">JavaScript &amp; PHP Developer: CalderaWP</h2><img src="/caldera-globe-25.png" class="components__img-mhn4yb-9 geKoov"/><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW"><a href="https://joshpress.net" color="link" class="components__a-mhn4yb-1 kmwXOo">JoshPress.net</a></li><li class="components__li-mhn4yb-5 flYqAW"><a href="https://CalderaForms.com" color="link" class="components__a-mhn4yb-1 kmwXOo">CalderaForms.com</a></li><li class="components__li-mhn4yb-5 flYqAW"><a href="https://twitter.com/josh412" color="link" class="components__a-mhn4yb-1 kmwXOo">@josh412</a></li></ul></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Slides/ Code</h1><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">Slides</li><li class="components__li-mhn4yb-5 flYqAW"><a href="https://github.com/Shelob9/testing-react-apps" color="link" class="components__a-mhn4yb-1 kmwXOo">Example Code For Part One</a></li><li class="components__li-mhn4yb-5 flYqAW"><a href="https://github.com/Shelob9/testing-react-wordpress" color="link" class="components__a-mhn4yb-1 kmwXOo">Example Code Part Two</a></li></ul></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Types Of Tests</h1><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">What Questions Do Tests Answer?</h2></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Types Of Tests</h1><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Unit Tests</h2><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Does A Component Work In Isolation?</p></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Types Of Tests</h1><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Integration (Feature) Tests</h2><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Do The Components Work Together?</p></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Types Of Tests</h1><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Acceptance (e2e) Tests</h2><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Does the whole system work together?</p></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">JavaScript Testing In And Around WordPress</h1><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Part One: Testing React Apps</h2><p font-size="2" class="components__p-mhn4yb-2 gGFRxd"><a href="https://github.com/Shelob9/testing-react-apps" color="link" class="components__a-mhn4yb-1 kmwXOo">Example Code For Part One</a></p></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">How React Works</h1><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Everything In Context....</h2></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Step 1</h2><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">React creates an object representation of nodes representing a user interface.</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">It does not produce HTML.</li></ul></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Step 2</h2><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">A &quot;renderer&quot; converts that object to a useable interface.</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">ReactDOM renders React as DOM tree and appended to DOM.</li><li class="components__li-mhn4yb-5 flYqAW">ReactDOMServer renders to an HTML string for server to send to client.</li></ul></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Test Renderers</h1><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd"><a href="https://reactjs.org/docs/test-renderer.html" color="link" class="components__a-mhn4yb-1 kmwXOo">React Test Renderer</a></p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">Good for basic tests and snapshots. No JSDOM.</li></ul></li><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd"><a href="https://airbnb.io/enzyme/" color="link" class="components__a-mhn4yb-1 kmwXOo">Enzyme</a></p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">Renders to JSDOM. Good for testing events and class components methods/ state.</li></ul></li><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd"><a href="https://testing-library.com/docs/react-testing-library/intro" color="link" class="components__a-mhn4yb-1 kmwXOo">React Testing Library</a></p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">Good for basic test, snapshots, testing events, testing hooks, etc.</li></ul></li></ul></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">The Test Suite</h1><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Test Runner (Jest)</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">Runs the tests</li></ul></li><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Test Renderer (react-test-library)</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">Creates and inspects output</li></ul></li><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Assertions (Chai)</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">Tests the output</li></ul></li></ul></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Zero-Config Testing</h1><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">(and more)</h2><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">react-scripts</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW"><code color="code" class="components__inlineCode-mhn4yb-8 enxrZL">react-scripts test</code></li><li class="components__li-mhn4yb-5 flYqAW">Used by create-react-app</li></ul></li><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">@wordpress/scripts</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW"><code color="code" class="components__inlineCode-mhn4yb-8 enxrZL">wordpress-scripts test</code></li><li class="components__li-mhn4yb-5 flYqAW">Developed for Gutenberg, great for your plugins.</li></ul></li></ul></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><p font-size="2" class="components__p-mhn4yb-2 gGFRxd"><code color="code" class="components__inlineCode-mhn4yb-8 enxrZL">npx create-react-app</code></p><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Let&#x27;s Write Some Tests</h1><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">And A Web App :)</p></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Create A React App</h1><pre font-size="1" color="pre" class="components__Pre-mhn4yb-7 iBAInW"># install create-react-app
+npx create-react-app
+# Run the included test
+yarn test
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Testing Included!</h1><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Create React App comes with one test.</p><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">This is an acceptance test. It tests if <strong>anything</strong> is broken.</p></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Test The App Renders</h2><pre class="language-jsx components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre">import React from &quot;react&quot;;
+import ReactDOM from &quot;react-dom&quot;;
+import App from &quot;./App&quot;;
+it(&quot;renders without crashing&quot;, () =&gt; {
+  const div = document.createElement(&quot;div&quot;);
+  ReactDOM.render(&lt;App /&gt;, div);
+  ReactDOM.unmountComponentAtNode(div);
+});
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Questions To Ask?</h1><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">How do I know the components works?</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">Unit tests</li></ul></li><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">How do I know the components work together?</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">Integration/ Feature Tests</li></ul></li><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">What is the most realistic test of the program?</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">Acceptance/ e2e Tests</li></ul></li></ul></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">App Spec</h1><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Create a one page app that:</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">Displays a value</li><li class="components__li-mhn4yb-5 flYqAW">Has an input to change that value</li></ul></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Test Spec</h1><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Unit tests:</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">Does display component display the supplied value?</li><li class="components__li-mhn4yb-5 flYqAW">Does edit callback display the value</li><li class="components__li-mhn4yb-5 flYqAW">Does the edit component supply updated value to onChange callback?</li></ul></li></ul></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Test Spec</h1><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Integration Tests:</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">Does the display value change with the input?</li></ul></li></ul></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Layout Of Our Test File</h1></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU"><code color="code" class="components__inlineCode-mhn4yb-8 enxrZL">test()</code> Syntax</h2><pre class="language-jsx components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre">//Import React
+import React from &quot;react&quot;;
+//Import test renderer
+import TestRenderer from &quot;react-test-renderer&quot;;
+//Import component to test
+import { DisplayValue } from &quot;./DisplayValue&quot;;
+
+test(&quot;Component renders value&quot;, () =&gt; {});
+
+test(&quot;Component has supplied class name&quot;, () =&gt; {});
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">BDD Style</h2><pre class="language-jsx components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre">describe(&quot;EditValue Component&quot;, () =&gt; {
+  //Shared mock onChange function
+  let onChange = jest.fn();
+  beforeEach(() =&gt; {
+    //Reset onChange mock before each test.
+    onChange = jest.fn();
+  });
+
+  it(&quot;Has the supplied value in the input&quot;, () =&gt; {});
+
+  it(&quot;id and for attribute match&quot;, () =&gt; {});
+
+  it(&quot;Passes string to onChange when changed&quot;, () =&gt; {});
+});
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Install React Test Renderer</h1><pre class="language-bash components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre">yarn add react-test-renderer
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Unit Testing React Components</h1></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Find Props</h2><pre class="language-javascript components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre">test(&quot;Component renders value&quot;, () =&gt; {
+  //Render component
+  const value = &quot;The Value&quot;;
+  const testRenderer = TestRenderer.create(&lt;DisplayValue value={value} /&gt;);
+  //Get the rendered node
+  const testInstance = testRenderer.root;
+  //find the div and make sure it has the right text
+  expect(testInstance.findByType(&quot;div&quot;).props.children).toBe(value);
+});
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Do This For Every Prop?</h2><h3 font-size="2" class="components__Heading-mhn4yb-0-h3 sc-cSHVUG Zzzy">That Is Testing React, Not Your Application</h3></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Snapshot Testing</h2><h3 font-size="2" class="components__Heading-mhn4yb-0-h3 sc-cSHVUG Zzzy">Renders Component To JSON</h3><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Stores JSON in file system</p></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Snapshot Testing</h2><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Snapshots Acomplish Two Things:</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">Make sure your props went to the right places.</li><li class="components__li-mhn4yb-5 flYqAW">Force your to <strong>commit</strong> to changes.</li></ul></li></ul></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Create A Snapshot Test</h2><pre class="language-javascript components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre">test(&quot;Component renders correctly&quot;, () =&gt; {
+  expect(
+    TestRenderer.create(
+      &lt;DisplayValue value={&quot;The Value&quot;} className={&quot;the-class-name&quot;} /&gt;
+    ).toJSON()
+  ).toMatchSnapshot();
+});
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Testing Events</h1><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">React testing library is best for this. Enzyme is an alternative.</p><pre class="language-bash components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre">yarn add @testing-library/react
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Test On Change Event</h2><pre class="language-jsx components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre">import { render, cleanup } from &quot;@testing-library/react&quot;;
+describe(&quot;EditValue component&quot;, () =&gt; {
+  afterEach(cleanup); //reset JSDOM after each test
+  it(&quot;Calls the onchange function&quot;, () =&gt; {
+    //put test here
+  });
+  it(&quot;Has the right value&quot;, () =&gt; {
+    //put test here
+  });
+});
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Test On Change Event</h2><pre font-size="1" color="pre" class="components__Pre-mhn4yb-7 iBAInW">const onChange = jest.fn();
+const { getByTestId } = render(
+  &lt;EditValue
+    onChange={onChange}
+    value={&quot;&quot;}
+    id={&quot;input-test&quot;}
+    className={&quot;some-class&quot;}
+  /&gt;
+);
+fireEvent.change(getByTestId(&quot;input-test&quot;), {
+  target: { value: &quot;New Value&quot; }
+});
+expect(onChange).toHaveBeenCalledTimes(1);
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Snapshot Testing</h2><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">With React Testing Library</p><pre class="language-jsx components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre">test(&quot;matches snapshot&quot;, () =&gt; {
+  expect(
+    render(
+      &lt;EditValue
+        onChange={jest.fn()}
+        value={&quot;Hi Roy&quot;}
+        id={&quot;some-id&quot;}
+        className={&quot;some-class&quot;}
+      /&gt;
+    )
+  ).toMatchSnapshot();
+});
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Integration Tests</h1><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Do the two components work together as expected?</p></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Integration Test</h2><pre class="language-jsx components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre">it(&quot;Displays the updated value when value changes&quot;, () =&gt; {
+  const { container, getByTestId } = render(&lt;App /&gt;);
+  expect(container.querySelector(&quot;.display-value&quot;).textContent).toBe(&quot;Hi Roy&quot;);
+  fireEvent.change(getByTestId(&quot;the-input&quot;), {
+    target: { value: &quot;New Value&quot; }
+  });
+  expect(container.querySelector(&quot;.display-value&quot;).textContent).toBe(
+    &quot;New Value&quot;
+  );
+});
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">JavaScript Testing In And Around WordPress</h1><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Part Two: Testing Gutenberg Blocks</h2><p font-size="2" class="components__p-mhn4yb-2 gGFRxd"><a href="https://github.com/Shelob9/testing-react-wordpress" color="link" class="components__a-mhn4yb-1 kmwXOo">Example Code Part Two</a></p></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><p font-size="2" class="components__p-mhn4yb-2 gGFRxd"><code color="code" class="components__inlineCode-mhn4yb-8 enxrZL">yarn add @wordpress/scripts</code></p><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Let&#x27;s Write Some Tests</h1><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">And A Plugin</p></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Spec</h1><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">A block for showing some text.</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">The components for the app should be reused.</li><li class="components__li-mhn4yb-5 flYqAW">The block preview and rendered content should be identical.</li><li class="components__li-mhn4yb-5 flYqAW">The control for the value should appear in the block’s inspector controls.</li></ul></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Test Spec</h1><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Integration Test</h2><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Will Gutenberg be able to manage our component’s state?</p></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Test Spec</h1><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">e2e Test</h2><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Does our plugin activate without errors?</p><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Does our block appear in the block chooser?</p></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">What Is <code color="code" class="components__inlineCode-mhn4yb-8 enxrZL">@wordpress/scripts</code> ??</h1><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">React-scripts inspired zero-config build tool for WordPress plugins with blocks.</li><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Provides:</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">Compilers</li><li class="components__li-mhn4yb-5 flYqAW">Linters</li><li class="components__li-mhn4yb-5 flYqAW">Test runner</li><li class="components__li-mhn4yb-5 flYqAW">e2e tests</li><li class="components__li-mhn4yb-5 flYqAW">Local development</li></ul></li></ul></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Setting Up Plugin For Testing</h1><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Install WordPress scripts</h2><pre class="language-bash components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre"># Install WordPress scripts
+yarn add @wordpress/scripts
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Add Scripts To package.json</h2><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">See <a href="https://www.npmjs.com/package/@wordpress/scripts" color="link" class="components__a-mhn4yb-1 kmwXOo">README</a></p><pre class="language-json components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre">{
+  &quot;scripts&quot;: {
+    &quot;build&quot;: &quot;wp-scripts build&quot;,
+    &quot;start&quot;: &quot;wp-scripts start&quot;,
+    &quot;test:e2e&quot;: &quot;wp-scripts test-e2e --config e2e/jest.config.js&quot;,
+    &quot;test:unit&quot;: &quot;wp-scripts test-unit-js --config jest.config.js&quot;,
+    &quot;env:start&quot;: &quot;bash start.sh&quot;
+  }
+}
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Jest Is The Test Runner</h1><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Testing works the same, we can use same renderers.</p><p font-size="2" class="components__p-mhn4yb-2 gGFRxd"><code color="code" class="components__inlineCode-mhn4yb-8 enxrZL">@wordpress/scripts</code> works on top of Jest, webpack, etc.</p></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Structure Block For Easy Testing</h1><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">The file that builds the block to do nothing but build the block.</p></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">The Block</h1><pre class="language-jsx components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre">import { registerBlockType } from &quot;@wordpress/blocks&quot;;
+import { Editor } from &quot;./components/Editor&quot;;
+import { Save } from &quot;./components/Save&quot;;
+const blockConfig = require(&quot;../block.json&quot;);
+const { name, title, attributes, category, keywords } = blockConfig;
+
+registerBlockType(name, {
+  title,
+  attributes,
+  category,
+  keywords,
+  edit: props =&gt; &lt;Editor {...props} /&gt;,
+  save: props =&gt; &lt;Save {...props} /&gt;
+});
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Edit And Save Callbacks</h2><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">The edit and save callback are composed in separate files, importing components built for the app.</p></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h3 font-size="2" class="components__Heading-mhn4yb-0-h3 sc-cSHVUG Zzzy">Edit Callback</h3><pre class="language-jsx components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre">import React, { Fragment } from &quot;react&quot;;
+import { EditValue } from &quot;./app/EditValue&quot;;
+import { DisplayValue } from &quot;./app/DisplayValue&quot;;
+import { InspectorControls } from &quot;@wordpress/block-editor&quot;;
+export const Editor = ({ attributes, setAttributes, className, clientId }) =&gt; {
+  //Change handler
+  const onChange = value =&gt; setAttributes({ value });
+  //current value
+  const { value } = attributes;
+  return (
+    &lt;Fragment&gt;
+      &lt;InspectorControls&gt;
+        &lt;EditValue
+          className={`${className}-editor`}
+          id={clientId}
+          value={value}
+          onChange={onChange}
+        /&gt;
+      &lt;/InspectorControls&gt;
+      &lt;DisplayValue value={value} className={className} /&gt;
+    &lt;/Fragment&gt;
+  );
+};
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h3 font-size="2" class="components__Heading-mhn4yb-0-h3 sc-cSHVUG Zzzy">Test Edit Callback</h3><pre class="language-jsx components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre">//Import React
+import React from &quot;react&quot;;
+//Import test renderer
+import { render, fireEvent, cleanup } from &quot;@testing-library/react&quot;;
+//Import component to test
+import { Editor } from &quot;./Editor&quot;;
+
+describe(&quot;Editor componet&quot;, () =&gt; {
+  afterEach(cleanup);
+
+  it(&quot;matches snapshot&quot;, () =&gt; {
+    const attributes = { value: &quot;Hi Roy&quot; };
+    const setAttributes = jest.fn();
+
+    const props = {
+      attributes,
+      setAttributes,
+      clientId: &quot;random-id&quot;,
+      className: &quot;wp-blocks-whatever&quot;
+    };
+    expect(render(&lt;Editor {...props} /&gt;)).toMatchSnapshot();
+  });
+});
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h3 font-size="2" class="components__Heading-mhn4yb-0-h3 sc-cSHVUG Zzzy">Save Callback:</h3><pre class="language-jsx components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre">import React from &quot;react&quot;;
+import { DisplayValue } from &quot;./app/DisplayValue&quot;;
+export const Save = ({ attributes, className }) =&gt; {
+  return &lt;DisplayValue value={attributes.value} className={className} /&gt;;
+};
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h3 font-size="2" class="components__Heading-mhn4yb-0-h3 sc-cSHVUG Zzzy">Test Save Callback</h3><pre class="language-jsx components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre">//Import React
+import React from &quot;react&quot;;
+//Import test renderer
+import { render, cleanup } from &quot;@testing-library/react&quot;;
+//Import component to test
+import { Save } from &quot;./Save&quot;;
+
+describe(&quot;Save componet&quot;, () =&gt; {
+  afterEach(cleanup);
+
+  it(&quot;matches snapshot&quot;, () =&gt; {
+    const attributes = { value: &quot;Hi Roy&quot; };
+
+    const props = {
+      attributes,
+      clientId: &quot;random-id&quot;,
+      className: &quot;wp-blocks-whatever&quot;
+    };
+    expect(render(&lt;Save {...props} /&gt;)).toMatchSnapshot();
+  });
+});
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">End To End Testing Gutenberg Blocks</h1><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Assuming that all of the components work, does the program function as expected.</p></li><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Test as a user.</p></li><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd"><a href="https://make.wordpress.org/core/2019/06/27/introducing-the-wordpress-e2e-tests/" color="link" class="components__a-mhn4yb-1 kmwXOo">Introductory Post</a></p></li><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd"><a href="https://developer.wordpress.org/block-editor/packages/packages-scripts/" color="link" class="components__a-mhn4yb-1 kmwXOo">Documentation</a></p></li></ul></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">How To Setup Up WordPress End To End Tests</h2><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">To make things easier, add the WordPress e2e test utilities:</p><pre class="language-bash components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre"># Add e2e test utilities
+yarn add @wordpress/e2e-test-utils
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Configure Jest</h2><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">A seperate Jest config is needed to make sure it does NOT run unit tests.</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW"><a href="https://github.com/Shelob9/testing-react-wordpress/blob/master/jest.config.js" color="link" class="components__a-mhn4yb-1 kmwXOo">Jest Config For Unit Tests</a></li><li class="components__li-mhn4yb-5 flYqAW"><a href="https://github.com/Shelob9/testing-react-wordpress/tree/master/e2e" color="link" class="components__a-mhn4yb-1 kmwXOo">Jest Config For e2e Tests</a></li></ul><pre class="language-javascript components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre">const defaultConfig = require(&quot;./node_modules/@wordpress/scripts/config/jest-unit.config.js&quot;);
+module.exports = {
+  //use the default from WordPress for everything...
+  ...defaultConfig,
+  //Except test ignore, where we need to ignore our e2e test directory
+  testPathIgnorePatterns: [&quot;/.git/&quot;, &quot;/node_modules/&quot;, &quot;&lt;rootDir&gt;/e2e&quot;]
+};
+</pre><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">This is based on <a href="https://github.com/WordPress/wordpress-develop/tree/master/tests/e2e" color="link" class="components__a-mhn4yb-1 kmwXOo">WordPress core&#x27;s e2e tests</a></p></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h2 font-size="3" class="components__Heading-mhn4yb-0-h2 sc-jzJRlG lmsSVU">Uses Puppetter To Automate Chrome</h2><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Easiest if you have WordPress running locally in Docker <a href="https://github.com/WordPress/wordpress-develop/tree/master/tools/local-env" color="link" class="components__a-mhn4yb-1 kmwXOo">like core does</a></p><p font-size="2" class="components__p-mhn4yb-2 gGFRxd"><a href="https://github.com/Shelob9/testing-react-wordpress/tree/master#local-development" color="link" class="components__a-mhn4yb-1 kmwXOo">Copy my copy of core&#x27;s local development</a></p></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Test That Block Works</h1><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Import helper functions from <code color="code" class="components__inlineCode-mhn4yb-8 enxrZL">@wordpress/e2e-test-utils</code></p><pre class="language-js components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre">import {
+  insertBlock,
+  getEditedPostContent,
+  createNewPost,
+  activatePlugin
+} from &quot;@wordpress/e2e-test-utils&quot;;
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Test That Block Works</h1><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Add The Block</p><pre class="language-jsx components__Pre-mhn4yb-7 iBAInW" font-size="1" color="pre">describe(&quot;Block&quot;, () =&gt; {
+  beforeEach(async () =&gt; {
+    await activatePlugin(&quot;josh-jswp/josh-jswp.php&quot;);
+  });
+
+  it(&quot;Can add block&quot;, async () =&gt; {
+    await createNewPost();
+    await insertBlock(&quot;Josh Block&quot;);
+
+    expect(await getEditedPostContent()).toMatchSnapshot();
+  });
+});
+</pre></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Do NOT e2e Test Everything</h1><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">e2e tests ensure that the system works toghether.</p><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">They are a compliment to less expensive unit/ inegration tests.</p></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">Recomendations</h1><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Assume your components will be reused.</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">Test in isolation.</li></ul></li><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Start with unit tests on new projects.</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">Makes refactoring faster and safer.</li></ul></li><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">For legacy projects, start with acceptance tests.</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">Covers more, makes refactoring for unit-testablity safer.</li></ul></li><li class="components__li-mhn4yb-5 flYqAW"><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Follow and learn from <a href="https://kentcdodds.com/" color="link" class="components__a-mhn4yb-1 kmwXOo">Kent C. Dodds</a></p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW">Author of React Testing Library and many great posts and videos about React, React testing.</li></ul></li></ul></div></div><div class="Slide__Root-sc-1lv2mpt-0 eyUBso"><div><h1 font-size="4" class="components__Heading-mhn4yb-0-h1 sc-fjdhpX dTZITA">🤷 Any Questions? 🤷</h1><p font-size="2" class="components__p-mhn4yb-2 gGFRxd">Slides: <!-- -->[🤷]</p><ul font-size="2" class="components__ul-mhn4yb-3 jaZFKY"><li class="components__li-mhn4yb-5 flYqAW"><a href="https://joshpress.net" color="link" class="components__a-mhn4yb-1 kmwXOo">JoshPress.net</a></li><li class="components__li-mhn4yb-5 flYqAW"><a href="https://CalderaForms.com" color="link" class="components__a-mhn4yb-1 kmwXOo">CalderaForms.com</a></li><li class="components__li-mhn4yb-5 flYqAW"><a href="https://twitter.com/josh412" color="link" class="components__a-mhn4yb-1 kmwXOo">@josh412</a></li></ul></div></div></div></div></div></div><div class="Provider__Bottom-sc-1iqnegd-0 gUKKmP"><div class="Flex-sc-1wyx7c4-0 eYrBlB"><button title="go to: 0" color="text" class="Dots__Dot-m5ie3q-0 bdHLLh"></button><button title="go to: 1" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 2" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 3" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 4" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 5" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 6" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 7" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 8" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 9" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 10" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 11" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 12" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 13" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 14" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 15" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 16" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 17" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 18" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 19" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 20" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 21" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 22" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 23" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 24" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 25" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 26" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 27" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 28" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 29" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 30" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 31" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 32" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 33" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 34" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 35" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 36" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 37" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 38" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 39" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 40" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 41" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 42" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 43" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 44" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 45" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 46" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 47" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 48" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 49" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 50" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 51" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 52" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 53" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 54" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 55" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 56" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 57" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 58" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 59" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 60" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 61" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button><button title="go to: 62" color="text" class="Dots__Dot-m5ie3q-0 bURACn"></button></div></div><div role="button" title="Previous Slide" class="Provider__Button-sc-1iqnegd-1 sc-bdVaJa jucmbo"></div><div role="button" title="Next Slide" class="Provider__Button-sc-1iqnegd-1 sc-bwzfXH bENqf"></div></div>
+<script src="main.js"></script>
+</body>
+</html>
