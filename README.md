@@ -1,7 +1,8 @@
 # JavaScript Testing In And Around WordPress
 
 Source for talk slides.
-
+- [View Slides](https://shelob9.github.io/testing-javascript-in-and-around-wordpress/)
+- [Download Slides As PDF](https://shelob9.github.io/testing-javascript-in-and-around-wordpress/presentation.pdf)
 - [Example Code For Part One](https://github.com/Shelob9/testing-react-apps)
 - [Example Code Part Two](https://github.com/Shelob9/testing-react-wordpress)
 

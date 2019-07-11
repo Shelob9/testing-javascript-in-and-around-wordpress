@@ -12,8 +12,14 @@ export { default as theme } from "./theme";
   />
   <meta property="article:published_time" content="2019-08-11T05:59:00+01:00" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:description" content="Slides for Josh Pollock's talk from JavaScript For WordPress 2019 confrence, JavaScript Testing In And Around Wordress" />
-  <meta name="twitter:title" content="JavaScript Testing In And Around Wordress | Josh Pollock" />
+  <meta
+    name="twitter:description"
+    content="Slides for Josh Pollock's talk from JavaScript For WordPress 2019 confrence, JavaScript Testing In And Around Wordress"
+  />
+  <meta
+    name="twitter:title"
+    content="JavaScript Testing In And Around Wordress | Josh Pollock"
+  />
 </Head>
 
 <Image
@@ -49,9 +55,18 @@ export { default as theme } from "./theme";
 
 # Slides/ Code
 
-- Slides
+## Slides
+
+- [View Slides](https://shelob9.github.io/testing-javascript-in-and-around-wordpress/)
+- [Download Slides As PDF](https://shelob9.github.io/testing-javascript-in-and-around-wordpress/presentation.pdf)
+- [Source Code For Slides](https://github.com/Shelob9/testing-javascript-in-and-around-wordpress)
+
+## Example Code
+
 - [Example Code For Part One](https://github.com/Shelob9/testing-react-apps)
-- [Example Code Part Two](https://github.com/Shelob9/testing-react-wordpress)
+- [Example Code For Part Two](https://github.com/Shelob9/testing-react-wordpress)
+
+Find a bug or typo? Pull requests are welcome.
 
 ---
 
@@ -104,6 +119,7 @@ Does the whole system work together?
 React creates an object representation of nodes representing a user interface.
 
 - It does not produce HTML.
+  - `React.createElement( 'div', {className: 'alert'}, 'Something Happened' );`
 
 ---
 
@@ -111,8 +127,12 @@ React creates an object representation of nodes representing a user interface.
 
 A "renderer" converts that object to a useable interface.
 
+`const app = React.createElement( 'div', {className: 'alert'}, 'Something Happened' )`;
+
 - ReactDOM renders React as DOM tree and appended to DOM.
+  - `ReactDOM.render( app, domElement );`
 - ReactDOMServer renders to an HTML string for server to send to client.
+  - `ReactDOMServer.renderToString(app);`
 
 ---
 
@@ -123,18 +143,20 @@ A "renderer" converts that object to a useable interface.
 - [Enzyme](https://airbnb.io/enzyme/)
   - Renders to JSDOM. Good for testing events and class components methods/ state.
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
-  - Good for basic test, snapshots, testing events, testing hooks, etc.
+  - Good for basic test, snapshots, testing events, testing hooks, etc. Uses JSDOM.
 
 ---
 
 # The Test Suite
 
-- Test Runner (Jest)
+- Test Runner
   - Runs the tests
-- Test Renderer (react-test-library)
+  - Examples: Jest. phpunit
+- Test Renderers
   - Creates and inspects output
-- Assertions (Chai)
+- Assertions
   - Tests the output
+  - Example: Chai
 
 ---
 
@@ -196,11 +218,11 @@ it("renders without crashing", () => {
 # Questions To Ask?
 
 - How do I know the components works?
-  - Unit tests
+  - Answer with tests
 - How do I know the components work together?
-  - Integration/ Feature Tests
+  - Answer with integration/ feature tests
 - What is the most realistic test of the program?
-  - Acceptance/ e2e Tests
+  - Answer with acceptance/ e2e tests
 
 ---
 
@@ -217,7 +239,7 @@ Create a one page app that:
 
 - Unit tests:
   - Does display component display the supplied value?
-  - Does edit callback display the value
+  - Does edit component display the value?
   - Does the edit component supply updated value to onChange callback?
 
 ---
@@ -263,8 +285,6 @@ describe("EditValue Component", () => {
 
   it("Has the supplied value in the input", () => {});
 
-  it("id and for attribute match", () => {});
-
   it("Passes string to onChange when changed", () => {});
 });
 ```
@@ -287,8 +307,8 @@ yarn add react-test-renderer
 ## Find Props
 
 ```javascript
+//Probably don't do this
 test("Component renders value", () => {
-  //Render component
   const value = "The Value";
   const testRenderer = TestRenderer.create(<DisplayValue value={value} />);
   //Get the rendered node
@@ -350,7 +370,7 @@ yarn add @testing-library/react
 ## Test On Change Event
 
 ```jsx
-import { render, cleanup } from "@testing-library/react";
+import { render, cleanup, fireEvent } from "@testing-library/react";
 describe("EditValue component", () => {
   afterEach(cleanup); //reset JSDOM after each test
   it("Calls the onchange function", () => {
@@ -380,6 +400,26 @@ fireEvent.change(getByTestId("input-test"), {
   target: { value: "New Value" }
 });
 expect(onChange).toHaveBeenCalledTimes(1);
+```
+
+---
+
+## Test On Change Event
+
+```
+const onChange = jest.fn();
+const { getByTestId } = render(
+  <EditValue
+    onChange={onChange}
+    value={""}
+    id={"input-test"}
+    className={"some-class"}
+  />
+);
+fireEvent.change(getByTestId("input-test"), {
+  target: { value: "New Value" }
+});
+expect(onChange).toHaveBeenCalledWith('New Value');
 ```
 
 ---
@@ -425,6 +465,15 @@ it("Displays the updated value when value changes", () => {
   );
 });
 ```
+
+---
+
+# Review App Spec
+
+Create a one page app that:
+
+- Displays a value
+- Has an input to change that value
 
 ---
 
@@ -517,17 +566,17 @@ See [README](https://www.npmjs.com/package/@wordpress/scripts)
 
 Testing works the same, we can use same renderers.
 
-`@wordpress/scripts` works on top of Jest, webpack, etc.
+`@wordpress/scripts` works on top of Jest, webpack, Babel, etc.
 
 ---
 
-# Structure Block For Easy Testing
+# Structuring Blocks For Easy Testing
 
 The file that builds the block to do nothing but build the block.
 
 ---
 
-# The Block
+## The Block
 
 ```jsx
 import { registerBlockType } from "@wordpress/blocks";
@@ -552,9 +601,11 @@ registerBlockType(name, {
 
 The edit and save callback are composed in separate files, importing components built for the app.
 
+### Reponsiblity: Map Props
+
 ---
 
-### Edit Callback
+## Edit Callback
 
 ```jsx
 import React, { Fragment } from "react";
@@ -587,34 +638,30 @@ export const Editor = ({ attributes, setAttributes, className, clientId }) => {
 ### Test Edit Callback
 
 ```jsx
-//Import React
-import React from "react";
-//Import test renderer
-import { render, fireEvent, cleanup } from "@testing-library/react";
-//Import component to test
-import { Editor } from "./Editor";
-
 describe("Editor componet", () => {
   afterEach(cleanup);
-
   it("matches snapshot", () => {
     const attributes = { value: "Hi Roy" };
     const setAttributes = jest.fn();
-
-    const props = {
-      attributes,
-      setAttributes,
-      clientId: "random-id",
-      className: "wp-blocks-whatever"
-    };
-    expect(render(<Editor {...props} />)).toMatchSnapshot();
+    expect(
+      render(
+        <Editor
+          {...{
+            attributes,
+            setAttributes,
+            clientId: "random-id",
+            className: "wp-blocks-whatever"
+          }}
+        />
+      )
+    ).toMatchSnapshot();
   });
 });
 ```
 
 ---
 
-### Save Callback:
+### Save Callback
 
 ```jsx
 import React from "react";
@@ -629,25 +676,21 @@ export const Save = ({ attributes, className }) => {
 ### Test Save Callback
 
 ```jsx
-//Import React
-import React from "react";
-//Import test renderer
-import { render, cleanup } from "@testing-library/react";
-//Import component to test
-import { Save } from "./Save";
-
 describe("Save componet", () => {
   afterEach(cleanup);
-
   it("matches snapshot", () => {
     const attributes = { value: "Hi Roy" };
-
-    const props = {
-      attributes,
-      clientId: "random-id",
-      className: "wp-blocks-whatever"
-    };
-    expect(render(<Save {...props} />)).toMatchSnapshot();
+    expect(
+      render(
+        <Save
+          {...{
+            attributes,
+            clientId: "random-id",
+            className: "wp-blocks-whatever"
+          }}
+        />
+      )
+    ).toMatchSnapshot();
   });
 });
 ```
@@ -706,6 +749,10 @@ Easiest if you have WordPress running locally in Docker [like core does](https:/
 
 # Test That Block Works
 
+---
+
+## Use Helpers
+
 Import helper functions from `@wordpress/e2e-test-utils`
 
 ```js
@@ -719,20 +766,16 @@ import {
 
 ---
 
-# Test That Block Works
-
-Add The Block
+## Test Adding Block
 
 ```jsx
 describe("Block", () => {
   beforeEach(async () => {
     await activatePlugin("josh-jswp/josh-jswp.php");
   });
-
   it("Can add block", async () => {
     await createNewPost();
     await insertBlock("Josh Block");
-
     expect(await getEditedPostContent()).toMatchSnapshot();
   });
 });
@@ -763,7 +806,10 @@ They are a compliment to less expensive unit/ inegration tests.
 
 # 🤷 Any Questions? 🤷
 
-Slides: [🤷]
+- [Slides, And Links](https://shelob9.github.io/testing-javascript-in-and-around-wordpress/)
+- [Download Slides As PDF](https://shelob9.github.io/testing-javascript-in-and-around-wordpress/presentation.pdf)
+
+## 🙏 Thank You! 🙏
 
 - [JoshPress.net](https://joshpress.net)
 - [CalderaForms.com](https://CalderaForms.com)
