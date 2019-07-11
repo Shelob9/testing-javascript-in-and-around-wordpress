@@ -1,7 +1,6 @@
 {
-  "private": true,
   "version": "1.0.0",
-  "description": "Deck created with mdx-deck",
+  "description": "Slides for JavaScript Testing In And Around WordPress",
   "scripts": {
     "start": "mdx-deck deck.mdx",
     "build": "mdx-deck build deck.mdx",
@@ -9,11 +8,12 @@
     "pdf": "mdx-deck pdf deck.mdx",
     "image": "mdx-deck screenshot deck.mdx",
     "help": "mdx-deck",
-    "publish": "yarn build && yarn pdf && yarn build:copy"
+    "publish": "yarn build && yarn pdf && yarn build:copy && build:images",
+    "build:images": "cp caldera-globe-25.png docs/caldera-globe-25.png && cp caldera-globe-md.png docs/caldera-globe-md.png"
   },
   "keywords": [],
-  "author": "Brent Jackson",
-  "license": "MIT",
+  "author": "Josh Pollock",
+  "license": "GPL-2.0",
   "devDependencies": {
     "mdx-deck": "^1.6.7"
   }
