@@ -85,6 +85,8 @@ Does the whole system work together?
 
 ## Part One: Testing React Apps
 
+[Example Code For Part One](https://github.com/Shelob9/testing-react-apps)
+
 ---
 
 # How React Works
@@ -244,10 +246,10 @@ test("Component has supplied class name", () => {});
 
 ---
 
-## BDD style
+## BDD Style
 
 ```jsx
-describe("EditValue component", () => {
+describe("EditValue Component", () => {
   //Shared mock onChange function
   let onChange = jest.fn();
   beforeEach(() => {
@@ -260,8 +262,6 @@ describe("EditValue component", () => {
   it("id and for attribute match", () => {});
 
   it("Passes string to onChange when changed", () => {});
-
-  it("Passes string to onChange when changed with an integer", () => {});
 });
 ```
 
@@ -284,9 +284,12 @@ yarn add react-test-renderer
 
 ```javascript
 test("Component renders value", () => {
+  //Render component
   const value = "The Value";
   const testRenderer = TestRenderer.create(<DisplayValue value={value} />);
+  //Get the rendered node
   const testInstance = testRenderer.root;
+  //find the div and make sure it has the right text
   expect(testInstance.findByType("div").props.children).toBe(value);
 });
 ```
@@ -343,24 +346,15 @@ yarn add @testing-library/react
 ## Test On Change Event
 
 ```jsx
+import { render, cleanup } from "@testing-library/react";
 describe("EditValue component", () => {
-  afterEach(cleanup);
+  afterEach(cleanup); //reset JSDOM after each test
   it("Calls the onchange function", () => {
-    const onChange = jest.fn();
-    const { getByTestId } = render(
-      <EditValue
-        onChange={onChange}
-        value={""}
-        id={"input-test"}
-        className={"some-class"}
-      />
-    );
-    fireEvent.change(getByTestId("input-test"), {
-      target: { value: "New Value" }
-    });
-    expect(onChange).toHaveBeenCalledTimes(1);
+    //put test here
   });
-  //...
+  it("Has the right value", () => {
+    //put test here
+  });
 });
 ```
 
@@ -368,47 +362,40 @@ describe("EditValue component", () => {
 
 ## Test On Change Event
 
-```jsx
-describe("EditValue component", () => {
-  afterEach(cleanup);
-  //...
-  it("Passes updated value, not event to onChange callback", () => {
-    const onChange = jest.fn();
-    const { getByTestId } = render(
-      <EditValue
-        onChange={onChange}
-        value={""}
-        id="input-test"
-        className={"some-class"}
-      />
-    );
-    fireEvent.change(getByTestId("input-test"), {
-      target: { value: "New Value" }
-    });
-    expect(onChange).toHaveBeenCalledWith("New Value");
-  });
+```
+const onChange = jest.fn();
+const { getByTestId } = render(
+  <EditValue
+    onChange={onChange}
+    value={""}
+    id={"input-test"}
+    className={"some-class"}
+  />
+);
+fireEvent.change(getByTestId("input-test"), {
+  target: { value: "New Value" }
 });
+expect(onChange).toHaveBeenCalledTimes(1);
 ```
 
 ---
 
-# Snapshot Testing
+## Snapshot Testing
+
+With React Testing Library
 
 ```jsx
-describe("EditValue component", () => {
-  afterEach(cleanup);
-  it("matches snapshot", () => {
-    expect(
-      render(
-        <EditValue
-          onChange={jest.fn()}
-          value={"Hi Roy"}
-          id={"some-id"}
-          className={"some-class"}
-        />
-      )
-    ).toMatchSnapshot();
-  });
+test("matches snapshot", () => {
+  expect(
+    render(
+      <EditValue
+        onChange={jest.fn()}
+        value={"Hi Roy"}
+        id={"some-id"}
+        className={"some-class"}
+      />
+    )
+  ).toMatchSnapshot();
 });
 ```
 
@@ -440,6 +427,8 @@ it("Displays the updated value when value changes", () => {
 # JavaScript Testing In And Around WordPress
 
 ## Part Two: Testing Gutenberg Blocks
+
+[Example Code Part Two](https://github.com/Shelob9/testing-react-wordpress)
 
 ---
 
@@ -520,13 +509,17 @@ See [README](https://www.npmjs.com/package/@wordpress/scripts)
 
 ---
 
-## Jest Is The Test Runner
+# Jest Is The Test Runner
 
-Nothing new to learn.
+Testing works the same, we can use same renderers.
+
+`@wordpress/scripts` works on top of Jest, webpack, etc.
+
+---
 
 # Structure Block For Easy Testing
 
-- The file that builds the block to do nothing but build the block.
+The file that builds the block to do nothing but build the block.
 
 ---
 
@@ -662,6 +655,9 @@ describe("Save componet", () => {
 - Assuming that all of the components work, does the program function as expected.
 - Test as a user.
 
+- [Introductory Post](https://make.wordpress.org/core/2019/06/27/introducing-the-wordpress-e2e-tests/)
+- [Documentation](https://developer.wordpress.org/block-editor/packages/packages-scripts/)
+
 ---
 
 ## How To Setup Up WordPress End To End Tests
@@ -675,27 +671,38 @@ yarn add @wordpress/e2e-test-utils
 
 ---
 
-### Configure Jest
+## Configure Jest
 
-I don't have time for this.
+A seperate Jest config is needed to make sure it does NOT run unit tests.
 
-[Example You Can Copy]()
+- [Jest Config For Unit Tests](https://github.com/Shelob9/testing-react-wordpress/blob/master/jest.config.js)
+- [Jest Config For e2e Tests](https://github.com/Shelob9/testing-react-wordpress/tree/master/e2e)
+
+```javascript
+const defaultConfig = require("./node_modules/@wordpress/scripts/config/jest-unit.config.js");
+module.exports = {
+  //use the default from WordPress for everything...
+  ...defaultConfig,
+  //Except test ignore, where we need to ignore our e2e test directory
+  testPathIgnorePatterns: ["/.git/", "/node_modules/", "<rootDir>/e2e"]
+};
+```
 
 This is based on [WordPress core's e2e tests](https://github.com/WordPress/wordpress-develop/tree/master/tests/e2e)
 
 ---
 
-### Uses Puppetter To Automate Chrome
+## Uses Puppetter To Automate Chrome
 
-You must have WordPress running locally with Docker.
+Easiest if you have WordPress running locally in Docker [like core does](https://github.com/WordPress/wordpress-develop/tree/master/tools/local-env)
 
-You need to have Chromium headless installed.
-
-The local development environment in example code works for this.
+[Copy my copy of core's local development](https://github.com/Shelob9/testing-react-wordpress/tree/master#local-development)
 
 ---
 
-### Test That Block Works
+# Test That Block Works
+
+Import helper functions from `@wordpress/e2e-test-utils`
 
 ```js
 import {
@@ -708,7 +715,9 @@ import {
 
 ---
 
-### Test That Block Works
+# Test That Block Works
+
+Add The Block
 
 ```jsx
 describe("Block", () => {
@@ -727,7 +736,7 @@ describe("Block", () => {
 
 ---
 
-### Do NOT e2e Test Everything
+# Do NOT e2e Test Everything
 
 e2e tests ensure that the system works toghether.
 
@@ -735,29 +744,23 @@ They are a compliment to less expensive unit/ inegration tests.
 
 ---
 
-<h3>Links Related To WordPress e2e Tests</h3>
+# Recomendations
 
-<ul>
-  <li>
-    {" "}
-    <a href="https://make.wordpress.org/core/2019/06/27/introducing-the-wordpress-e2e-tests/">
-      https://make.wordpress.org/core/2019/06/27/introducing-the-wordpress-e2e-tests/
-    </a>{" "}
-  </li>
-  <li>
-    {" "}
-    <a href="https://developer.wordpress.org/block-editor/packages/packages-scripts/">
-      https://developer.wordpress.org/block-editor/packages/packages-scripts/
-    </a>{" "}
-  </li>
-</ul>
+- Assume your components will be reused.
+  - Test in isolation.
+- Start with unit tests on new projects.
+  - Makes refactoring faster and safer.
+- For legacy projects, start with acceptance tests.
+  - Covers more, makes refactoring for unit-testablity safer.
+- Follow and learn from [Kent C. Dodds](https://kentcdodds.com/)
+  - Author of React Testing Library and many great posts and videos about React, React testing.
 
 ---
 
 # 🤷 Any Questions? 🤷
 
-- Slides: [🤷]
+Slides: [🤷]
 
-* ℹ️ [JoshPress.net](https://joshpress.net)
-* 🌋[CalderaForms.com](https://CalderaForms.com)
-* 🐦[@josh412](https://twitter.com/josh412)
+- [JoshPress.net](https://joshpress.net)
+- [CalderaForms.com](https://CalderaForms.com)
+- [@josh412](https://twitter.com/josh412)
