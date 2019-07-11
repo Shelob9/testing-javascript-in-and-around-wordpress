@@ -1,8 +1,7 @@
 import { Appear, Head, Image } from "mdx-deck";
 import { FullScreenCode, Invert } from "mdx-deck/layouts";
-import SyntaxHighlighter from "react-syntax-highlighter/prism";
-import { atomLight, atomDark } from "react-syntax-highlighter/styles/prism";
-export { dark as theme } from "mdx-deck/themes";
+
+export { default as theme } from "./theme";
 
 <Head>
   <title>Presentation Title</title>
@@ -22,44 +21,39 @@ export { dark as theme } from "mdx-deck/themes";
     color: 'white',
     backgroundColor: 'black',
   }}>
+<img src="/caldera-globe-md.png" />
 
-# JavaScript Testing In And Aroung WordPress
+<h1> JavaScript Testing In And Around WordPress</h1>
+<h2>Josh Pollock </h2>
 
+<img src="/caldera-globe-md.png" />
 </Image>
 
 ---
 
-<Image
-  src="https://pbs.twimg.com/profile_images/1044050165269766149/YyCvrqoN_400x400.jpg"
-  style={{
-    display: "flex",
-    alignItems: "top",
-    justifyContent: "center",
-    color: "white",
-    backgroundColor: "black",
-    height: "50%"
-  }}
->
-  <h2> 🌋Hi I'm Josh 🌋 </h2>
-  JavaScript & PHP Developer: CalderaWP 🌋
+# 🌋Hi I'm Josh 🌋
 
-</Image>
+## JavaScript & PHP Developer: CalderaWP
 
-- ℹ️ [JoshPress.net](https://joshpress.net)
-- 🌋[CalderaForms.com](https://CalderaForms.com)
-- 🐦[@josh412](https://twitter.com/josh412)
+![](/caldera-globe-25.png)
+
+- [JoshPress.net](https://joshpress.net)
+- [CalderaForms.com](https://CalderaForms.com)
+- [@josh412](https://twitter.com/josh412)
 
 ---
 
-## Slides/ Code
+# Slides/ Code
 
 - Slides
-- Example Code Part One
-- Example Code Part Two
+- [Example Code For Part One](https://github.com/Shelob9/testing-react-apps)
+- [Example Code Part Two](https://github.com/Shelob9/testing-react-wordpress)
 
 ---
 
-## Types Of Tests
+# Types Of Tests
+
+## What Questions Do Tests Answer?
 
 ---
 
@@ -95,6 +89,8 @@ Does the whole system work together?
 
 # How React Works
 
+## Everything In Context....
+
 ---
 
 ## Step 1
@@ -116,9 +112,12 @@ A "renderer" converts that object to a useable interface.
 
 # Test Renderers
 
-- React Test Renderer
-- React Testing Library
-- Enzyme
+- [React Test Renderer](https://reactjs.org/docs/test-renderer.html)
+  - Good for basic tests and snapshots. No JSDOM.
+- [Enzyme](https://airbnb.io/enzyme/)
+  - Renders to JSDOM. Good for testing events and class components methods/ state.
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+  - Good for basic test, snapshots, testing events, testing hooks, etc.
 
 ---
 
@@ -133,12 +132,16 @@ A "renderer" converts that object to a useable interface.
 
 ---
 
-# Zero-Config Testing (and more)
+# Zero-Config Testing
+
+## (and more)
 
 - react-scripts
   - `react-scripts test`
+  - Used by create-react-app
 - @wordpress/scripts
   - `wordpress-scripts test`
+  - Developed for Gutenberg, great for your plugins.
 
 ---
 
@@ -152,22 +155,16 @@ And A Web App :)
 
 # Create A React App
 
-<SyntaxHighlighter
-  language="bash"
-  style={atomLight}
-  customStyle={{ minWidth: "500px" }}
->
-  {`
+```
 # install create-react-app
 npx create-react-app
 # Run the included test
 yarn test
-  `}
-</SyntaxHighlighter>
+```
 
 ---
 
-## Section
+# Testing Included!
 
 Create React App comes with one test.
 
@@ -177,23 +174,16 @@ This is an acceptance test. It tests if **anything** is broken.
 
 ## Test The App Renders
 
-<SyntaxHighlighter
-  language="bash"
-  style={atomLight}
-  customStyle={{ minWidth: "500px" }}
->
-  {`
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-it('renders without crashing', () => {
-  const div = document.createElement('div');
+```jsx
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+it("renders without crashing", () => {
+  const div = document.createElement("div");
   ReactDOM.render(<App />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
-`}
-
-</SyntaxHighlighter>
+```
 
 ---
 
@@ -279,15 +269,10 @@ describe("EditValue component", () => {
 
 # Install React Test Renderer
 
-<SyntaxHighlighter
-  language="bash"
-  style={atomLight}
-  customStyle={{ minWidth: "500px" }}
->
-  {`
+```bash
 yarn add react-test-renderer
-  `}
-</SyntaxHighlighter>
+
+```
 
 ---
 
@@ -297,21 +282,14 @@ yarn add react-test-renderer
 
 ## Find Props
 
-<SyntaxHighlighter
-  language="javascript"
-  style={atomLight}
-  customStyle={{ minWidth: "500px" }}
->
-  {`
-test( 'Component renders value', () => {
-    const value = 'The Value';
-    const testRenderer = TestRenderer.create(<DisplayValue value={value} />);
-    const testInstance = testRenderer.root;
-    expect(testInstance.findByType('div').props.children).toBe(value);
+```javascript
+test("Component renders value", () => {
+  const value = "The Value";
+  const testRenderer = TestRenderer.create(<DisplayValue value={value} />);
+  const testInstance = testRenderer.root;
+  expect(testInstance.findByType("div").props.children).toBe(value);
 });
-`}
-
-</SyntaxHighlighter>
+```
 
 ---
 
@@ -340,24 +318,15 @@ Stores JSON in file system
 
 ## Create A Snapshot Test
 
-<SyntaxHighlighter
-  language="javascript"
-  style={atomLight}
-  customStyle={{ minWidth: "500px" }}
->
-  {`
-test( 'Component renders correctly', () => {
-    expect(
-        TestRenderer.create(
-            <DisplayValue
-                value={'The Value'}
-                className={'the-class-name'}
-             />
-        ).toJSON()
-    ).toMatchSnapshot();
+```javascript
+test("Component renders correctly", () => {
+  expect(
+    TestRenderer.create(
+      <DisplayValue value={"The Value"} className={"the-class-name"} />
+    ).toJSON()
+  ).toMatchSnapshot();
 });
-`}
-</SyntaxHighlighter>
+```
 
 ---
 
@@ -365,108 +334,83 @@ test( 'Component renders correctly', () => {
 
 React testing library is best for this. Enzyme is an alternative.
 
-<SyntaxHighlighter
-  language="bash"
-  style={atomLight}
-  customStyle={{ minWidth: "500px" }}
->
-  {`
+```bash
 yarn add @testing-library/react
-  `}
-</SyntaxHighlighter>
+```
 
 ---
 
 ## Test On Change Event
 
-<SyntaxHighlighter
-  language="javascript"
-  style={atomLight}
-  customStyle={{ minWidth: "500px" }}
->
-  {`
+```jsx
 describe("EditValue component", () => {
-    afterEach(cleanup);
-    it("Calls the onchange function", () => {
-        const onChange = jest.fn();
-        const { getByTestId } = render(
-          <EditValue 
-            onChange={onChange} 
-            value={""} 
-            id={'input-test'}
-            className={"some-class"}  
-          />);
-        fireEvent.change(getByTestId("input-test"), {
-            target: { value: "New Value" }
-        });
-        expect(onChange).toHaveBeenCalledTimes(1);
+  afterEach(cleanup);
+  it("Calls the onchange function", () => {
+    const onChange = jest.fn();
+    const { getByTestId } = render(
+      <EditValue
+        onChange={onChange}
+        value={""}
+        id={"input-test"}
+        className={"some-class"}
+      />
+    );
+    fireEvent.change(getByTestId("input-test"), {
+      target: { value: "New Value" }
     });
-    //...
+    expect(onChange).toHaveBeenCalledTimes(1);
+  });
+  //...
 });
-`}
-
-</SyntaxHighlighter>
+```
 
 ---
 
 ## Test On Change Event
 
-<SyntaxHighlighter
-  language="javascript"
-  style={atomLight}
-  customStyle={{ minWidth: "500px" }}
->
-  {`
+```jsx
 describe("EditValue component", () => {
-    afterEach(cleanup);
-    //...
-    it("Passes updated value, not event to onChange callback", () => {
-        const onChange = jest.fn();
-        const { getByTestId } = render(
-          <EditValue 
-            onChange={onChange} 
-            value={""}
-             id="input-test" 
-             className={"some-class"}  
-          />);
-        fireEvent.change(getByTestId("input-test"), {
-            target: { value: "New Value" }
-        });
-        expect(onChange).toHaveBeenCalledWith("New Value");
+  afterEach(cleanup);
+  //...
+  it("Passes updated value, not event to onChange callback", () => {
+    const onChange = jest.fn();
+    const { getByTestId } = render(
+      <EditValue
+        onChange={onChange}
+        value={""}
+        id="input-test"
+        className={"some-class"}
+      />
+    );
+    fireEvent.change(getByTestId("input-test"), {
+      target: { value: "New Value" }
     });
+    expect(onChange).toHaveBeenCalledWith("New Value");
+  });
 });
-`}
-
-</SyntaxHighlighter>
+```
 
 ---
 
 # Snapshot Testing
 
-<SyntaxHighlighter
-  language="javascript"
-  style={atomLight}
-  customStyle={{ minWidth: "500px" }}
->
-  {`
+```jsx
 describe("EditValue component", () => {
-    afterEach(cleanup);
-     it( 'matches snapshot', () => {
-        expect( 
-          render(
-            <EditValue 
-              onChange={jest.fn()} 
-              value={"Hi Roy"}
-              id={'some-id'} 
-              className={"some-class"}
-            /> 
-          )
-        ).toMatchSnapshot();
-    });
+  afterEach(cleanup);
+  it("matches snapshot", () => {
+    expect(
+      render(
+        <EditValue
+          onChange={jest.fn()}
+          value={"Hi Roy"}
+          id={"some-id"}
+          className={"some-class"}
+        />
+      )
+    ).toMatchSnapshot();
+  });
 });
-`}
-
-</SyntaxHighlighter>
+```
 
 ---
 
@@ -478,23 +422,18 @@ Do the two components work together as expected?
 
 ## Integration Test
 
-<SyntaxHighlighter
-  language="javascript"
-  style={atomLight}
-  customStyle={{ minWidth: "500px" }}
->
-  {`
-it( 'Displays the updated value when value changes', () => {
-    const { container,getByTestId } = render(<App  />)
-    expect(container.querySelector('.display-value').textContent).toBe('Hi Roy');
-    fireEvent.change(getByTestId("the-input"), {
-        target: { value: "New Value" }
-    });
-    expect(container.querySelector('.display-value').textContent).toBe('New Value');
+```jsx
+it("Displays the updated value when value changes", () => {
+  const { container, getByTestId } = render(<App />);
+  expect(container.querySelector(".display-value").textContent).toBe("Hi Roy");
+  fireEvent.change(getByTestId("the-input"), {
+    target: { value: "New Value" }
+  });
+  expect(container.querySelector(".display-value").textContent).toBe(
+    "New Value"
+  );
 });
-`}
-
-</SyntaxHighlighter>
+```
 
 ---
 
@@ -556,16 +495,10 @@ Does our block appear in the block chooser?
 
 ## Install WordPress scripts
 
-<SyntaxHighlighter
-  language="bash"
-  style={atomLight}
-  customStyle={{ minWidth: "500px" }}
->
-  {`
+```bash
 # Install WordPress scripts
 yarn add @wordpress/scripts
-  `}
-</SyntaxHighlighter>
+```
 
 ---
 
