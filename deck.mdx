@@ -468,6 +468,42 @@ it("Displays the updated value when value changes", () => {
 
 ---
 
+# Test For Accesibility Errors
+
+Using [dequeue's aXe](https://www.deque.com/axe/)
+
+```bash
+# Add react-axe
+yarn add react-axe --dev
+# Add react-axe for Jest
+yarn add jest-axe --dev
+```
+
+---
+
+# Test App For Accesibility Errors
+
+## Does the accessibility scanner raise errors?
+
+This does NOT mean your app is accessible!
+
+```jsx
+const { axe, toHaveNoViolations } = require("jest-axe");
+expect.extend(toHaveNoViolations);
+import React from "react";
+import server from "react-dom/server";
+import App from "./App";
+import { render, fireEvent, cleanup } from "@testing-library/react";
+
+it("Raises no a11y errors", async () => {
+  const html = server.renderToString(<App />);
+  const results = await axe(html);
+  expect(results).toHaveNoViolations();
+});
+```
+
+---
+
 # Review App Spec
 
 Create a one page app that:
@@ -799,6 +835,10 @@ They are a compliment to less expensive unit/ inegration tests.
   - Makes refactoring faster and safer.
 - For legacy projects, start with acceptance tests.
   - Covers more, makes refactoring for unit-testablity safer.
+- Do Not Forget To Test For Accesibility errors
+
+  - [Good Post On Reporting a11y Errors In Console](https://web.dev/accessibility-auditing-react)
+
 - Follow and learn from [Kent C. Dodds](https://kentcdodds.com/)
   - Author of React Testing Library and many great posts and videos about React, React testing.
 
