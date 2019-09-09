@@ -9,8 +9,7 @@
     "pdf": "mdx-deck pdf deck.mdx",
     "image": "mdx-deck screenshot deck.mdx",
     "help": "mdx-deck",
-    "deploy": "yarn build && yarn pdf && yarn build:copy && yarn build:images",
-    "build:images": "cp caldera-globe-25.png docs/caldera-globe-25.png && cp caldera-globe-md.png docs/caldera-globe-md.png"
+    "deploy": "yarn build && yarn pdf && yarn build:copy"
   },
   "keywords": [],
   "author": "Josh Pollock",
