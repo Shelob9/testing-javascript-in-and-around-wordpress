@@ -23,11 +23,11 @@ export { default as theme } from "./theme";
 </Head>
 
 <h1> JavaScript Testing In And Around WordPress</h1>
-<h2>Josh Pollock</h2>
+<h2>Josh Pollock (he/him)</h2>
 
 ---
 
-# 👋Hi I'm Josh (he/ him) 🌊
+# 👋Hi I'm Josh🌊
 
 ![Saturday Drive Logo](https://s30817.pcdn.co/wp-content/uploads/2019/06/sd-logo-horizontal-768x157.png)
 
@@ -40,6 +40,7 @@ PHP & JavaScript engineer/ other nerd stuff
 - Previously: Co-owner/ lead developer: CalderaWP. Community manager/ developer: Pods Framework.
 - WordPress core contributor, educator, etc.
 - Hobbies: Test-driven Laravel and React development, outdoor exercise, science fiction.
+- Pronouns: He/ Him/ Y'all
 
 ## Say Hi
 
@@ -49,21 +50,27 @@ PHP & JavaScript engineer/ other nerd stuff
 
 ---
 
-# Slides/ Code
+## Slides and Code
 
-👀 JSWP-Testing.Caldera.dev 👀
+## Slides
 
-- [View Slides](https://shelob9.github.io/testing-javascript-in-and-around-wordpress/)
+- 👀 [View Slides](https://shelob9.github.io/testing-javascript-in-and-around-wordpress/)
 - [Download Slides As PDF](https://shelob9.github.io/testing-javascript-in-and-around-wordpress/presentation.pdf)
 - [Source Code For Slides](https://github.com/Shelob9/testing-javascript-in-and-around-wordpress)
 - [Related Blog Post](https://joshpress.net/testing-javascript-the-wordpress-way/)
 
 ## Example Code
 
-- [Example Code For Part One](https://github.com/Shelob9/testing-react-apps)
+- 👀 [Example Code For Part One](https://github.com/Shelob9/testing-react-apps)
 - [Example Code For Part Two](https://github.com/Shelob9/testing-react-wordpress)
 
 Find a bug or typo? Pull requests are welcome.
+
+---
+
+# Does My Code Work?
+
+## How would I know?
 
 ---
 
@@ -77,7 +84,7 @@ Find a bug or typo? Pull requests are welcome.
 
 ## Unit Tests
 
-Does A Component Work In Isolation?
+### Does A Component Work In Isolation?
 
 ---
 
@@ -85,7 +92,7 @@ Does A Component Work In Isolation?
 
 ## Integration (Feature) Tests
 
-Do The Components Work Together?
+### Do The Components Work Together?
 
 ---
 
@@ -93,7 +100,7 @@ Do The Components Work Together?
 
 ## Acceptance (e2e) Tests
 
-Does the whole system work together?
+### Does the whole system work together?
 
 ---
 
@@ -116,7 +123,9 @@ Does the whole system work together?
 React creates an object representation of nodes representing a user interface.
 
 - It does not produce HTML.
-  - `React.createElement( 'div', {className: 'alert'}, 'Something Happened' );`
+  ```js
+  React.createElement("div", { className: "alert" }, "Something Happened");
+  ```
 
 ---
 
@@ -124,12 +133,17 @@ React creates an object representation of nodes representing a user interface.
 
 A "renderer" converts that object to a useable interface.
 
-`const app = React.createElement( 'div', {className: 'alert'}, 'Something Happened' )`;
-
 - ReactDOM renders React as DOM tree and appended to DOM.
-  - `ReactDOM.render( app, domElement );`
+
+```js
+ReactDOM.render(<App />, domElement);
+```
+
 - ReactDOMServer renders to an HTML string for server to send to client.
-  - `ReactDOMServer.renderToString(app);`
+
+```js
+ReactDOMServer.renderToString(<App />);
+```
 
 ---
 
@@ -170,7 +184,9 @@ A "renderer" converts that object to a useable interface.
 
 ---
 
-`npx create-react-app`
+```sh
+npx create-react-app
+```
 
 # Let's Write Some Tests
 
