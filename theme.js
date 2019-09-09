@@ -3,10 +3,8 @@ import theme from "mdx-deck/themes";
 const regularTextSize = {
   fontSize: "1em"
 };
-console.log(theme.code);
 export default {
   ...theme,
-
   h1: {
     fontSize: "2.618em",
     color: "#a3bf61"
