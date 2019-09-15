@@ -35,31 +35,26 @@ export { default as theme } from "./theme";
 
 PHP & JavaScript engineer/ other nerd stuff
 
-- Currently: VP Engineering Experience Saturday Drive
-  - [Ninja Forms](https://NinjaForms.com), [Caldera Forms](https://CalderaForms.com), [SendWP](https://sendwp/com) and more.
+- Currently: VP Engineering Experience [SaturdayDrive.io](https://SaturdayDrive.io)
+  - [Ninja Forms](https://NinjaForms.com), [Caldera Forms](https://CalderaForms.com), [SendWP](https://sendwp.com) and more.
 - Previously: Co-owner/ lead developer: CalderaWP. Community manager/ developer: Pods Framework.
 - WordPress core contributor, educator, etc.
 - Hobbies: Test-driven Laravel and React development, outdoor exercise, science fiction.
-- Pronouns: He/ Him/ Y'all
-
-## Say Hi
-
-- [JoshPress.net](https://joshpress.net)
-- [SaturdayDrive.io](https://SaturdayDrive.io)
+- Pronouns: He/ Him
 - [@josh412](https://twitter.com/josh412)
 
 ---
 
 ## Slides and Code
 
-## Slides
+### Slides
 
 - 👀 [View Slides](https://shelob9.github.io/testing-javascript-in-and-around-wordpress/)
 - [Download Slides As PDF](https://shelob9.github.io/testing-javascript-in-and-around-wordpress/presentation.pdf)
 - [Source Code For Slides](https://github.com/Shelob9/testing-javascript-in-and-around-wordpress)
 - [Related Blog Post](https://joshpress.net/testing-javascript-the-wordpress-way/)
 
-## Example Code
+### Example Code
 
 - 👀 [Example Code For Part One](https://github.com/Shelob9/testing-react-apps)
 - [Example Code For Part Two](https://github.com/Shelob9/testing-react-wordpress)
@@ -500,13 +495,16 @@ yarn add jest-axe --dev
 
 This does NOT mean your app is accessible!
 
+---
+
 ```jsx
-const { axe, toHaveNoViolations } = require("jest-axe");
-expect.extend(toHaveNoViolations);
 import React from "react";
 import server from "react-dom/server";
 import App from "./App";
 import { render, fireEvent, cleanup } from "@testing-library/react";
+
+const { axe, toHaveNoViolations } = require("jest-axe");
+expect.extend(toHaveNoViolations);
 
 it("Raises no a11y errors", async () => {
   const html = server.renderToString(<App />);
