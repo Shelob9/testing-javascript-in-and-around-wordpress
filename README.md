@@ -1,6 +1,8 @@
 # JavaScript Testing In And Around WordPress
 
-Source for talk slides. A presentation about JavaScript testing for Wordress developers. Presented October, 2019 at [WordCamp New York City 2019](https://2019.nyc.wordcamp.org/session/react-and-javascript-testing-in-and-around-wordpress/)
+Source for talk slides. A presentation about JavaScript testing for Wordress developers. Presented October, 2019 at [WordCamp New York City 2019](https://2019.nyc.wordcamp.org/session/react-and-javascript-testing-in-and-around-wordpress/).
+
+> [Consume this material as a gitbook](https://react-wordpress-testing.joshpress.net/)
 
 - [View Slides](https://shelob9.github.io/testing-javascript-in-and-around-wordpress/)
 - [Download Slides As PDF](https://shelob9.github.io/testing-javascript-in-and-around-wordpress/presentation.pdf)
