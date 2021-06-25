@@ -22,26 +22,15 @@ export { default as theme } from "./theme";
   />
 </Head>
 
-<h1> JavaScript Testing In And Around WordPress</h1>
-<h2>Josh Pollock (he/him)</h2>
+# JavaScript Testing In And Around WordPress
 
----
+## Josh Pollock
 
-# 👋Hi I'm Josh🌊
+PHP & JavaScript Engineer/ Dog Enthusiast
 
-![Saturday Drive Logo](https://s30817.pcdn.co/wp-content/uploads/2019/06/sd-logo-horizontal-768x157.png)
-
-## About Me
-
-PHP & JavaScript engineer/ other nerd stuff
-
-- Currently: VP Engineering Experience [SaturdayDrive.io](https://SaturdayDrive.io)
-  - [Ninja Forms](https://NinjaForms.com), [Caldera Forms](https://CalderaForms.com), [SendWP](https://sendwp.com) and more.
-- Previously: Co-owner/ lead developer: CalderaWP. Community manager/ developer: Pods Framework.
-- WordPress core contributor, educator, etc.
-- Hobbies: Test-driven Laravel and React development, outdoor exercise, science fiction.
-- Pronouns: He/ Him
-- [@josh412](https://twitter.com/josh412)
+ - Lead Web Engineer [10up](https://10up.com)
+ - [JoshPress.net](https://joshpress.net)
+ - [@josh412](https://twitter.com/josh412)
 
 ---
 
@@ -52,25 +41,20 @@ PHP & JavaScript engineer/ other nerd stuff
 - 👀 [View Slides](https://shelob9.github.io/testing-javascript-in-and-around-wordpress/)
 - [Download Slides As PDF](https://shelob9.github.io/testing-javascript-in-and-around-wordpress/presentation.pdf)
 - [Source Code For Slides](https://github.com/Shelob9/testing-javascript-in-and-around-wordpress)
-- [Related Blog Post](https://joshpress.net/testing-javascript-the-wordpress-way/)
 
 ### Example Code
 
-- 👀 [Example Code For Part One](https://github.com/Shelob9/testing-react-apps)
+- [Example Code For Part One](https://github.com/Shelob9/testing-react-apps)
 - [Example Code For Part Two](https://github.com/Shelob9/testing-react-wordpress)
 
 Find a bug or typo? Pull requests are welcome.
 
 ---
 
-## Alternative Consumption Methods
+# Why Test?
 
-- [Consume this material as a gitbook](https://react-wordpress-testing.joshpress.net/)
----
-
-# Does My Code Work?
-
-## How would I know?
+* Does My Code Work?
+* How would I know?
 
 ---
 
@@ -114,20 +98,33 @@ Find a bug or typo? Pull requests are welcome.
 
 # How React Works
 
-## Everything In Context....
+## The Short Version
 
 ---
+# How React Works
 
 ## Step 1
 
 React creates an object representation of nodes representing a user interface.
 
-- It does not produce HTML.
+This code: 
   ```js
-  React.createElement("div", { className: "alert" }, "Something Happened");
+  React.createElement("ul", { className: "inline-list" }, [
+    React.createElement("li", { key: "first", className: "list-item" }, 'First Item')
+  ]);
   ```
 
+Becomes something like this:
+```js
+ {
+  ul: { className: "inline-list" }, [
+    "li", { key: "first", className: "list-item" }, 'First Item'
+  ]
+ }
+```
+
 ---
+# How React Works
 
 ## Step 2
 
@@ -212,6 +209,7 @@ Create React App comes with one test.
 This is an acceptance test. It tests if **anything** is broken.
 
 ---
+# Testing Included!
 
 ## Test The App Renders
 
@@ -257,16 +255,7 @@ Create a one page app that:
 
 ---
 
-# Test Spec
-
-- Integration Tests:
-  - Does the display value change with the input?
-
----
-
 # Layout Of Our Test File
-
----
 
 ## `test()` Syntax
 
@@ -284,18 +273,19 @@ test("Component has supplied class name", () => {});
 ```
 
 ---
+# Layout Of Our Test File
 
 ## BDD Style
 
 ```jsx
-describe("EditValue Component", () => {
-  //Shared mock onChange function
-  let onChange = jest.fn();
-  beforeEach(() => {
-    //Reset onChange mock before each test.
-    onChange = jest.fn();
-  });
+//Import React
+import React from "react";
+//Import test renderer
+import TestRenderer from "react-test-renderer";
+//Import component to test
+import { DisplayValue } from "./DisplayValue";
 
+describe("EditValue Component", () => {
   it("Has the supplied value in the input", () => {});
 
   it("Passes string to onChange when changed", () => {});
@@ -304,59 +294,44 @@ describe("EditValue Component", () => {
 
 ---
 
-# Install React Test Renderer
+# Unit Testing React Components
+
+## Install React Test Renderer
 
 ```bash
 yarn add react-test-renderer
 
 ```
 
----
+> [Documentation](https://reactjs.org/docs/test-renderer.html)
 
-# Unit Testing React Components
+## What We Are Testing
 
----
-
-## Find Props
-
-```javascript
-//Probably don't do this
-test("Component renders value", () => {
-  const value = "The Value";
-  const testRenderer = TestRenderer.create(<DisplayValue value={value} />);
-  //Get the rendered node
-  const testInstance = testRenderer.root;
-  //find the div and make sure it has the right text
-  expect(testInstance.findByType("div").props.children).toBe(value);
-});
+```jsx
+import React from 'react';
+export const DisplayValue = ({value,className}) =>(
+    <div className={className}>{value}</div>
+);
 ```
 
 ---
-
-## Do This For Every Prop?
-
-### That Is Testing React, Not Your Application
-
----
+# Unit Testing React Components
 
 ## Snapshot Testing
 
 ### Renders Component To JSON
 
-Stores JSON in file system
+Stores JSON representation of component in file system
+
+- Make sure your props went to the right places.
+- Forces you to **commit** to changes.
 
 ---
-
-## Snapshot Testing
-
-- Snapshots Acomplish Two Things:
-
-  - Make sure your props went to the right places.
-  - Force your to **commit** to changes.
-
----
+# Unit Testing React Components
 
 ## Create A Snapshot Test
+
+With React Test Renderer
 
 ```javascript
 test("Component renders correctly", () => {
@@ -372,13 +347,18 @@ test("Component renders correctly", () => {
 
 # Testing Events
 
-React testing library is best for this. Enzyme is an alternative.
+## Testing Library
+
+> [Documentation](https://testing-library.com/)
+
+## Install React Testing Library
 
 ```bash
 yarn add @testing-library/react
 ```
 
 ---
+# Testing Events
 
 ## Test On Change Event
 
@@ -386,7 +366,7 @@ yarn add @testing-library/react
 import { render, cleanup, fireEvent } from "@testing-library/react";
 describe("EditValue component", () => {
   afterEach(cleanup); //reset JSDOM after each test
-  it("Calls the onchange function", () => {
+  it("Calls the onChange function", () => {
     //put test here
   });
   it("Has the right value", () => {
@@ -396,63 +376,49 @@ describe("EditValue component", () => {
 ```
 
 ---
+# Testing Events
+
+## Test On Change Event
+
+```
+test("Calling the onChange function", () => {
+    const onChange = jest.fn();
+    const { getByLabelText } = render(<EditValue onChange={onChange} value={""} id={'input-test'}  className={"some-class"}  />);
+    fireEvent.change(getByLabelText("Set Value"), {
+        target: { value: "New Value" }
+    });
+    expect(onChange).toHaveBeenCalledTimes(1);
+});
+```
+
+---
+# Testing Events
 
 ## Test On Change Event
 
 ```
 const onChange = jest.fn();
-const { getByTestId } = render(
-  <EditValue
-    onChange={onChange}
-    value={""}
-    id={"input-test"}
-    className={"some-class"}
-  />
-);
-fireEvent.change(getByTestId("input-test"), {
-  target: { value: "New Value" }
+test("Passes updated value, not event to onChange callback", () => {
+    const onChange = jest.fn();
+    const { getByDisplayValue } = render(<EditValue onChange={onChange} value={"Old Value"} id="input-test" className={"some-class"}    />);
+    fireEvent.change(getByDisplayValue("Old Value"), {
+        target: { value: "New Value" }
+    });
+    expect(onChange).toHaveBeenCalledWith("New Value");
 });
-expect(onChange).toHaveBeenCalledTimes(1);
 ```
 
 ---
-
-## Test On Change Event
-
-```
-const onChange = jest.fn();
-const { getByTestId } = render(
-  <EditValue
-    onChange={onChange}
-    value={""}
-    id={"input-test"}
-    className={"some-class"}
-  />
-);
-fireEvent.change(getByTestId("input-test"), {
-  target: { value: "New Value" }
-});
-expect(onChange).toHaveBeenCalledWith('New Value');
-```
-
----
+# Unit Testing React Components
 
 ## Snapshot Testing
 
 With React Testing Library
 
 ```jsx
-test("matches snapshot", () => {
-  expect(
-    render(
-      <EditValue
-        onChange={jest.fn()}
-        value={"Hi Roy"}
-        id={"some-id"}
-        className={"some-class"}
-      />
-    )
-  ).toMatchSnapshot();
+test( 'matches snapshot', () => {
+    const {container} = render(<EditValue onChange={jest.fn()} value={"Hi Roy"} id={'some-id'} className={"some-class"}   /> );
+    expect( container ).toMatchSnapshot();
 });
 ```
 
@@ -463,8 +429,9 @@ test("matches snapshot", () => {
 Do the two components work together as expected?
 
 ---
+# Integration Tests
 
-## Integration Test
+## Does One Component Update The Other?
 
 ```jsx
 it("Displays the updated value when value changes", () => {

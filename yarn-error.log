@@ -1,46 +1,39 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\jpoll\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @mdx/components
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js
 
 PATH: 
-  C:\Users\jpoll\.platformsh\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\jpoll\bin;C:\Program Files (x86)\PHP\v7.3;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\Program Files\Microsoft\Web Platform Installer;C:\Users\jpoll\AppData\Local\Microsoft\WindowsApps;C:\Users\jpoll\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\jpoll\AppData\Roaming\npm;C:\Program Files\Lando\bin;C:\ProgramData\ComposerSetup\bin;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;C:\Users\jpoll\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\jpoll\AppData\Roaming\npm;C:\Program Files\Lando\bin;C:\Users\jpoll\AppData\Roaming\Composer\vendor\bin;C:\Users\jpoll\AppData\Local\hyper\app-3.0.2\resources\bin
+  C:\Users\jpoll\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\jpoll\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin;C:\Program Files (x86)\PowerShell\6;C:\PHP7;C:\Program Files\nodejs;C:\Program Files (x86)\Google\Cloud SDK\google-cloud-sdk\bin;C:\Program Files\PuTTY;C:\ProgramData\ComposerSetup\bin;C:\Program Files\Amazon\AWSCLIV2;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\jpoll\.windows-build-tools\python27;C:\Users\jpoll\AppData\Local\Microsoft\WindowsApps;C:\Users\jpoll\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\jpoll\AppData\Local\atom\bin;C:\Users\jpoll\AppData\Local\hyper\app-3.0.2\resources\bin;C:\Users\jpoll\AppData\Local\Yarn\bin;C:\Users\jpoll\AppData\Roaming\Composer\vendor\bin;C:\Program Files\JetBrains\PhpStorm 2019.2.4\bin;C:\Users\jpoll\AppData\Roaming\npm;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
 
 Yarn version: 
-  1.16.0
+  1.19.1
 
 Node version: 
-  10.16.0
+  12.16.1
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: http://localhost:4873/@mdx%2fcomponents: no such package available
-      at Request.params.callback [as _callback] (C:\Users\jpoll\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66091:18)
-      at Request.self.callback (C:\Users\jpoll\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:129590:22)
-      at Request.emit (events.js:198:13)
-      at Request.<anonymous> (C:\Users\jpoll\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:130562:10)
-      at Request.emit (events.js:198:13)
-      at IncomingMessage.<anonymous> (C:\Users\jpoll\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:130484:12)
-      at Object.onceWrapper (events.js:286:20)
-      at IncomingMessage.emit (events.js:203:15)
-      at endReadableNT (_stream_readable.js:1129:12)
-      at process._tickCallback (internal/process/next_tick.js:63:19)
+  Error: connect ECONNREFUSED 127.0.0.1:4873
+      at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1137:16)
 
 npm manifest: 
   {
-    "private": true,
+    "private": "true",
     "version": "1.0.0",
-    "description": "Deck created with mdx-deck",
+    "description": "Slides for JavaScript Testing In And Around WordPress",
     "scripts": {
       "start": "mdx-deck deck.mdx",
       "build": "mdx-deck build deck.mdx",
+      "build:copy": "rm -rf docs && cp -r dist docs",
       "pdf": "mdx-deck pdf deck.mdx",
       "image": "mdx-deck screenshot deck.mdx",
-      "help": "mdx-deck"
+      "help": "mdx-deck",
+      "deploy": "yarn build && yarn pdf && yarn build:copy"
     },
     "keywords": [],
-    "author": "Brent Jackson",
-    "license": "MIT",
+    "author": "Josh Pollock",
+    "license": "GPL-2.0",
     "devDependencies": {
       "mdx-deck": "^1.6.7"
     }
