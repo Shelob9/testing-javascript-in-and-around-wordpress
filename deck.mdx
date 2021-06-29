@@ -613,9 +613,8 @@ registerBlockType(blockConfig.name, {
 
 The edit and save callback are composed in separate files.
 
-
 ---
-# Edit Callback
+## Edit Callback
 
 ```jsx
 import { TextControl } from '@wordpress/components';
@@ -642,7 +641,7 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 ```
 
 ---
-# Test Edit Callback
+## Test Edit Callback
 
 ```jsx
 //Import component to test
@@ -657,7 +656,7 @@ describe("Editor componet", () => {
 ```
 
 ---
-# Snapshot Test Block Editor Component
+## Snapshot Test Block Editor Component
 
 ```jsx
 it('matches snapshot when selected', () => {
@@ -672,7 +671,7 @@ it('matches snapshot when selected', () => {
 ```
 
 --- 
-# Testing Events For Block Editor Component
+## Testing Events For Block Editor Component
 
 ```jsx
 it("Calls the onChange function", () => {
@@ -691,8 +690,6 @@ it("Calls the onChange function", () => {
 ```
 
 ---
-# Structuring Blocks For Testing
-
 ## Save Callback
 
 ```jsx
@@ -705,8 +702,6 @@ export default function save({ attributes }) {
 ```
 
 ---
-# Structuring Blocks For Testing
-
 ## Test Save Callback
 
 - Don't test the framework.
