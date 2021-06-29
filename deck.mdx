@@ -4,7 +4,7 @@ import { FullScreenCode, Invert } from "mdx-deck/layouts";
 export { default as theme } from "./theme";
 
 <Head>
-  <title>JavaScript Testing In And Around Wordress | Josh Pollock</title>
+  <title>Getting Started With JavaScript Testing for WordPress | Josh Pollock</title>
   <meta property="og:description" content="Presentation description" />
   <meta
     property="og:site_name"
@@ -18,20 +18,20 @@ export { default as theme } from "./theme";
   />
   <meta
     name="twitter:title"
-    content="JavaScript Testing In And Around Wordress | Josh Pollock"
+    content="Getting Started With JavaScript Testing for WordPress | Josh Pollock"
   />
 </Head>
 
-# JavaScript Testing In And Around WordPress
+# Getting Started With JavaScript Testing for WordPress
 
 ## Josh Pollock
 
-PHP & JavaScript Engineer/ Dog Enthusiast
+> PHP & JavaScript Engineer/ Dog Enthusiast
 
- - Lead Web Engineer [10up](https://10up.com)
- - [JoshPress.net](https://joshpress.net)
- - [@josh412](https://twitter.com/josh412)
- - [Josh412.eth](https://Josh412.eth)
+ * Lead Web Engineer [10up](https://10up.com)
+ * [JoshPress.net](https://joshpress.net)
+ * [@josh412](https://twitter.com/josh412)
+ * [Josh412.eth](https://Josh412.eth)
 ---
 
 # Slides and Code
@@ -48,6 +48,15 @@ PHP & JavaScript Engineer/ Dog Enthusiast
 - [Example Code For Part Two](https://github.com/Shelob9/testing-react-wordpress)
 
 Find a bug or typo? Pull requests are welcome.
+
+---
+
+# What Are We Covering?
+
+* Types of tests.
+* Unit and integration tests in React apps.
+* Unit and integration tests in Gutenberg blocks.
+* Structuring blocks for testing.
 
 ---
 
@@ -396,7 +405,7 @@ test("Calling the onChange function", () => {
 
 ## Test On Change Event
 
-```
+```jsx
 const onChange = jest.fn();
 test("Passes updated value, not event to onChange callback", () => {
     const onChange = jest.fn();
@@ -606,9 +615,7 @@ The edit and save callback are composed in separate files.
 
 
 ---
-# Structuring Blocks For Testing
-
-## Edit Callback
+# Edit Callback
 
 ```jsx
 import { TextControl } from '@wordpress/components';
@@ -635,37 +642,22 @@ export default function Edit({ attributes, setAttributes, isSelected }) {
 ```
 
 ---
-# Structuring Blocks For Testing
-
-
-## Test Edit Callback
+# Test Edit Callback
 
 ```jsx
-
-//Import React
-import React from 'react';
-//Import test renderer
-import { render, fireEvent, cleanup } from '@testing-library/react';
 //Import component to test
 import { Editor } from './Edit';
-
-
 describe("Editor componet", () => {
     afterEach(cleanup);
     it('matches snapshot when selected', () => {});
-
     it('matches snapshot when not selected', () => {});
-
     it("Calls the onchange function", () => {});
-
     it("Passes updated value, not event to onChange callback", () => { });
 });
 ```
 
 ---
-# Testing Blocks
-
-### Snapshot Test Block Editor Component
+# Snapshot Test Block Editor Component
 
 ```jsx
 it('matches snapshot when selected', () => {
@@ -680,9 +672,7 @@ it('matches snapshot when selected', () => {
 ```
 
 --- 
-# Testing Blocks
-
-### Testing Events For Block Editor Component
+# Testing Events For Block Editor Component
 
 ```jsx
 it("Calls the onChange function", () => {
@@ -720,8 +710,9 @@ export default function save({ attributes }) {
 ## Test Save Callback
 
 - Don't test the framework.
-- Don't test what doesn't make sense to test.
+- Probably better to rely on acceptance testing or manual QA.
 
+---
 # 🤷 Any Questions? 🤷
 
 - [Slides, And Links](https://shelob9.github.io/testing-javascript-in-and-around-wordpress/)

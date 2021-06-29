@@ -7,7 +7,7 @@ export default {
   ...theme,
   h1: {
     fontSize: "2.618em",
-    color: "#a3bf61"
+    color: "black"
   },
   pre: {
     backgroundColor: "#3a3a3c",
@@ -16,7 +16,7 @@ export default {
   code: { color: "#4b4b4b" },
   h2: {
     fontSize: "1.68em",
-    color: "black"
+    color: "#666666"
   },
   p: {
     ...regularTextSize
