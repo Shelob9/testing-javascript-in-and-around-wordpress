@@ -18,20 +18,20 @@ export { default as theme } from "./theme";
   />
   <meta
     name="twitter:title"
-    content="Getting Started With JavaScript Testing for WordPress | Josh Pollock"
+    content="Getting Started With JavaScript Testing For WordPress | Josh Pollock"
   />
 </Head>
 
-# Getting Started With JavaScript Testing for WordPress
+# Getting Started With JavaScript Testing For WordPress
 
 ## Josh Pollock
 
-> PHP & JavaScript Engineer/ Dog Enthusiast
 
- * Lead Web Engineer [10up](https://10up.com)
- * [JoshPress.net](https://joshpress.net)
- * [@josh412](https://twitter.com/josh412)
- * [Josh412.eth](https://Josh412.eth)
+- PHP & JavaScript Engineer, Dog Enthusiast  | Lead Web Engineer [10up](https://10up.com)
+- [JoshPress.net](https://joshpress.net) | [@josh412](https://twitter.com/josh412) | Josh412.eth
+
+### 👀 [JoshPress.net/slides/js-testing](https://JoshPress.net/slides/js-testing)👀
+
 ---
 
 # Slides and Code
@@ -46,6 +46,9 @@ export { default as theme } from "./theme";
 
 - [Example Code For Part One](https://github.com/Shelob9/testing-react-apps)
 - [Example Code For Part Two](https://github.com/Shelob9/testing-react-wordpress)
+
+### 👀 [JoshPress.net/slides/js-testing](https://JoshPress.net/slides/js-testing)👀
+
 
 Find a bug or typo? Pull requests are welcome.
 
@@ -116,7 +119,7 @@ Find a bug or typo? Pull requests are welcome.
 
 React creates an object representation of nodes representing a user interface.
 
-This code: 
+This code:
   ```js
   React.createElement("ul", { className: "inline-list" }, [
     React.createElement("li", { key: "first", className: "list-item" }, 'First Item')
@@ -670,22 +673,22 @@ it('matches snapshot when selected', () => {
 });
 ```
 
---- 
+---
 ## Testing Events For Block Editor Component
 
 ```jsx
 it("Calls the onChange function", () => {
-  const onChange = jest.fn();
+  const onChange = jest.fn()
   const { getByDisplayValue } = render(<Editor
       onChange={onChange}
-      value={'Salad'}
+      value={"Boring Water"}
       isSelected="false"
   />);
-  fireEvent.change(getByDisplayValue("Salad"), {
-      target: { value: "New Value" }
+  fireEvent.change(getByDisplayValue("Boring Water"), {
+      target: { value: "Sparkling Wate" }
   });
   expect(onChange).toHaveBeenCalledTimes(1);
-  expect(onChange).toHaveBeenCalledWith("Boring Water");
+  expect(onChange).toHaveBeenCalledWith("Sparkling Water");
 });
 ```
 
@@ -710,11 +713,9 @@ export default function save({ attributes }) {
 ---
 # 🤷 Any Questions? 🤷
 
-- [Slides, And Links](https://shelob9.github.io/testing-javascript-in-and-around-wordpress/)
+### 👀 [JoshPress.net/slides/js-testing](https://JoshPress.net/slides/js-testing)👀
 - [Download Slides As PDF](https://shelob9.github.io/testing-javascript-in-and-around-wordpress/presentation.pdf)
 
 ## 🙏 Thank You! 🙏
 
- - [JoshPress.net](https://joshpress.net)
- - [@josh412](https://twitter.com/josh412)
- - [Josh412.eth](https://Josh412.eth)
+- [JoshPress.net](https://joshpress.net) | [@josh412](https://twitter.com/josh412) | Josh412.eth
